@@ -55,7 +55,7 @@ Each DID linkage entry under the `claims` property of the resource's top-level J
 - `exp`: the time after which the claim of DID-to-domain linkage MUST NOT be deemed valid
 ...
 
-### Validation of Linkage Claim
+### Validation of Linkage Claims
 
 Validation of the claimed linkages between the domain and the DIDs present in the resource MUST proceed as follows:
 
