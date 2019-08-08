@@ -37,13 +37,13 @@ The format of the resource located at `/.well-known/did-configuration` shall be 
 
 ##### Top-Level Object
 
-The top-level object MUST be a JSON object with the list of DID linkage assertions included under the `claims` field, wherein each entry is a DID the domain owner is claiming to control. Each entry MUST contain the following properties and values:
+The top-level object MUST be a JSON object with the list of DID linkage assertions included under the `entries` field, wherein each entry is a DID the domain owner is claiming to control. Each entry MUST contain the following properties and values:
 
 **`entries`** - An object of DID linkage entries, wherein the keys are the DID being linked to the domain via the assertion.
 
 ##### DID Linkage Entries
 
-Each DID linkage entry under the `claims` property of the resource's top-level JWT object must contain the following properties and values:
+Each DID linkage entry under the `entries` property of the resource's top-level JWT object must contain the following properties and values:
 
 **`jwt`** - Base64 encoded JWT signed by currently valid keys from the claimed DID. This object MUST include the following sub-properties:
 - `iss`: the DID unique ID string of the claimed DID
@@ -60,7 +60,7 @@ Validation of the claimed linkages between the domain and the DIDs present in th
 3. Iterate through each of the DID linkage assertions in the `entries` field
 4. Process each DID linkage assertion as follows:
     1. Decode the JWT value of the linkage assertion
-    2. Ensure the `claims` property value within the linkage assertion matches the same domain at which the resource is located.
+    2. Ensure the `domain` property value within the linkage assertion matches the same domain at which the resource is located.
     3. Ensure the `exp` property's specified expiry time has not passed.
     3. Resolve the DID specified in linkage assertion's `iss` value.
     4. Validate the JWT signature using the keys in the DID's resolved DID Document.
