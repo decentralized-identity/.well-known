@@ -25,7 +25,7 @@ const defaultExpiresInHours = 99999;
 (async () => {
   const innerPayload = {
     iss: "did:btcr:xxcl-lzpq-q83a-0d5",
-    domain: "example.com",
+    domain: "well-known.transmute-did.com",
     exp: Math.floor(Date.now() / 1000) + 60 * 60 * defaultExpiresInHours
   };
   const domainClaimJwt = await ES256K.JWT.sign(innerPayload, privateJWK);

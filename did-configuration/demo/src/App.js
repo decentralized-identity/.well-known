@@ -26,32 +26,36 @@ const getPublicKeyFromJwt = async jwt => {
   return publicKeyFromResolver;
 };
 
-const getAuthorizedDids = async didConfigUri => {
-  const config = await getJson(didConfigUri);
-  return Promise.all(
-    Object.keys(config.claims).map(async did => {
-      const jwt = config.claims[did].jwt;
-      const publicKey = await getPublicKeyFromJwt(jwt);
-      const verified = await ES256K.JWT.verify(jwt, publicKey.publicKeyJwk);
-      if (verified.iss === did) {
-        console.log(did, " is authorized for: ", verified.domain);
-        return did;
-      }
-      return undefined;
-    })
-  );
-};
-
 class App extends React.Component {
   state = {};
 
   async componentWillMount() {
-    const authorizedDids = await getAuthorizedDids(
+    const getAuthorizedDids = async didConfigUri => {
+      const url = new URL(didConfigUri);
+      const config = await getJson(didConfigUri);
+      return Promise.all(
+        Object.keys(config.claims).map(async did => {
+          const jwt = config.claims[did].jwt;
+          const publicKey = await getPublicKeyFromJwt(jwt);
+          const verified = await ES256K.JWT.verify(jwt, publicKey.publicKeyJwk);
+          if (verified.iss === did) {
+            console.log(did, " is authorized for: ", verified.domain);
+            this.setState({
+              [did]: {
+                verified,
+                origin: url.hostname,
+                is_claim_for_origin: url.hostname === verified.domain
+              }
+            });
+            return did;
+          }
+          return undefined;
+        })
+      );
+    };
+    await getAuthorizedDids(
       window.location.origin + "/.well-known/did-configuration"
     );
-    this.setState({
-      authorizedDids
-    });
   }
   render() {
     return (
