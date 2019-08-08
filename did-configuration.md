@@ -19,9 +19,7 @@ The format of the resource located at `/.well-known/did-configuration` shall be 
 
 ```js
 {
-  "typ": "jwt",
-  "iat": 1565117957841,
-  "claims": {
+  "entries": {
     "did:btcr:123...": {
       "jwt": BASE_64_ENCODED_JWT
     },
@@ -39,11 +37,9 @@ The format of the resource located at `/.well-known/did-configuration` shall be 
 
 ##### Top-Level Object
 
-The top-level object MUST be a JWT with the list of DID linkage assertions included under the `claims` field, wherein each entry is a DID the domain owner is claiming to control. Each entry MUST contain the following properties and values:
+The top-level object MUST be a JSON object with the list of DID linkage assertions included under the `claims` field, wherein each entry is a DID the domain owner is claiming to control. Each entry MUST contain the following properties and values:
 
-**`typ`** - Specifies the type of object, and MUST be of the value `jwt`.
-**`iat`** - The time of publication, in epoch numeric datetime.
-**`claims`** - An object of DID linkage entries, wherein the keys are the DID being linked to the domain via the assertion.
+**`entries`** - An object of DID linkage entries, wherein the keys are the DID being linked to the domain via the assertion.
 
 ##### DID Linkage Entries
 
@@ -60,8 +56,8 @@ Each DID linkage entry under the `claims` property of the resource's top-level J
 Validation of the claimed linkages between the domain and the DIDs present in the resource MUST proceed as follows:
 
 1. Download the resource from the subdomain
-2. Validate that the resource is a JWT
-3. Iterate through each of the DID linkage assertions in the `claims` field
+2. Parse the resource as a JSON object
+3. Iterate through each of the DID linkage assertions in the `entries` field
 4. Process each DID linkage assertion as follows:
     1. Decode the JWT value of the linkage assertion
     2. Ensure the `claims` property value within the linkage assertion matches the same domain at which the resource is located.
