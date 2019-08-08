@@ -1,0 +1,38 @@
+{
+  "name": "demo",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://well-known.transmute-did.com",
+  "dependencies": {
+    "@transmute/es256k-jws-ts": "0.0.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "3.0.1"
+  },
+  "scripts": {
+    "config:create": "node ./scripts/create_did_configuration.js",
+    "config:verify": "node ./scripts/verify_did_configuration.js",
+    "start": "react-scripts start",
+    "build": "react-scripts build && mv ./build/* ../../docs",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}
