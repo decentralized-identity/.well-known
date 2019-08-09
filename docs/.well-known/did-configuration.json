@@ -1,0 +1,7 @@
+{
+  "claims": {
+    "did:btcr:xxcl-lzpq-q83a-0d5": {
+      "jwt": "eyJhbGciOiJFUzI1NksiLCJraWQiOiJKVXZwbGxNRVlVWjJqb081OVVOdWlfWFlEcXhWcWlGTExBSjhrbFd1UEJ3In0.eyJpc3MiOiJkaWQ6YnRjcjp4eGNsLWx6cHEtcTgzYS0wZDUiLCJkb21haW4iOiJ3ZWxsLWtub3duLnRyYW5zbXV0ZS1kaWQuY29tIiwiZXhwIjoxOTI1MjY5MjcyLCJpYXQiOjE1NjUyNzI4NzJ9.XIbDpoqxcdIq-FS4GQG4Aw2MLBWwsWQfaO5nLeOI2n00mh1PuP059TYR-CgvIAl7ANSTogeVH-jhjHbxGku5iw"
+    }
+  }
+}
