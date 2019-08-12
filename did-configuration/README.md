@@ -1,7 +1,7 @@
 
 # DID-to-Domain Linkage
 
-The ability to bridge between existing systems and systems based on Decentralized Identifiers is an important undertaking that can aid in bootstrapping adoption and usefuless of DIDs in the market. One clear area where DIDs could benefit from being linked with legacy systems is proving an Internet domain and DID share the same controlling entity.
+The ability to bridge between existing systems and systems based on Decentralized Identifiers is an important undertaking that can aid in bootstrapping adoption and usefulness of DIDs in the market. One clear area where DIDs could benefit from being linked with legacy systems is proving an Internet domain and DID share the same controlling entity.
 
 The easiest means for many with a Web presence to link their Internet domains to external systems is via publication of proving data somewhere under their domain they control. An ideal mechanism for deterministic, inferential lookup of such data is the existing Well-Known URI convention: https://tools.ietf.org/html/rfc5785.
 
