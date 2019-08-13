@@ -47,7 +47,7 @@ Each DID linkage entry under the `entries` property of the resource's top-level 
 
 **`jwt`** - Base64 encoded JWT signed by currently valid keys from the claimed DID. This object MUST include the following sub-properties:
 - `iss`: the DID unique ID string of the claimed DID
-- `claim`: the domain or subdomain the resource is located at
+- `domain`: the domain or subdomain the resource is located at
 - `exp`: the time after which the claim of DID-to-domain linkage MUST NOT be deemed valid
 ...
 
