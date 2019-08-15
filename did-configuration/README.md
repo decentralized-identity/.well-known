@@ -72,3 +72,31 @@ The origin-location of the resource file MUST infer the domain scope of the clai
 The rational behind the allowance of domain-based scoping is to allow subdomains to control their own linkages to DIDs. This is necessary for sites that provide users with their own user, project, or entity-scoped subdomains, with which they may wish to associate with DIDs. It is not feasible to force a site or app that follows this common pattern to constantly update its base domain resource file with the possibly innumerable state changes required by subdomain users modifying their own resource entries.
 
 Additionally, there is a desire to support Progressive Web Apps enhanced with DID-based features and functionality. PWAs are origin scoped to domains or subdomains, meaning a subdomain exists as its own distinct app scope. In order to allow a PWA that is installed from a subdomain to associate itself with a set of DIDs independently of another PWA or entity that is granted control over a different subdomain of the same TLD, there must be scope separation of `/.well-known/did-configuration` resources.
+
+## Secure Validation of DID-to-Domain Linkage
+
+There are many user flows where it is desirable to initiate trusted DID interactions with users relative to the platform, environment, or scope an app or service is operating in. In these cases, wallet apps and other types of User Agents must have a way to securely relate the trust within that non-DID context to the DID of the app or service requesting the user's participation in a trusted interaction. This section will describe some of these flows and how wallets, browsers, and operating systems can integrate mechanisms for ensuring the interactions they engage in are highly secure.
+
+### Web Browsers
+
+There are many contexts in which a site/app running in a Web browser will seek to engage users in a trusted interaction. Below we detail some of those we envision will be common, and how we can support them.
+
+#### Interactions based on visual artifacts (e.g. QR codes)
+
+```sequence
+participant Wallet App as W
+participant Browser as B
+participant Site as S
+participant Universal Resolver as UR
+
+B->S: 1. Loads page
+Note right of S: User activates DID interaction
+S->S: 2. Site invokes trusted browser API
+B->S: 3. Browser fetches DID-Configuration
+B->UR: 4. Browser resolves DID
+B->B: 5. Browser validates matching DID-Configuration entry
+B->B: 6. Browser validates Site's payload
+B->B: 7. Browser displays payload as QR in trusted UI
+W->B: 8. Wallet scans QR
+W->W: 9. Verifies and handles scanned payload
+```
