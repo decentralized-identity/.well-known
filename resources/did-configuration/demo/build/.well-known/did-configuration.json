@@ -1,7 +1,7 @@
 {
-  "claims": {
+  "entries": {
     "did:btcr:xxcl-lzpq-q83a-0d5": {
-      "jwt": "eyJhbGciOiJFUzI1NksiLCJraWQiOiJKVXZwbGxNRVlVWjJqb081OVVOdWlfWFlEcXhWcWlGTExBSjhrbFd1UEJ3In0.eyJpc3MiOiJkaWQ6YnRjcjp4eGNsLWx6cHEtcTgzYS0wZDUiLCJkb21haW4iOiJpZGVudGl0eS5mb3VuZGF0aW9uIiwiZXhwIjoxOTI4OTI2NTM3LCJpYXQiOjE1Njg5MzAxMzd9.bRBpvbbAwgDS__7TMXX9dDlIDWWRpFXiBQy3kh6HVxBa8DLV6hirQj5Wq-GvFYAb_PrsF8SxhaxPFr1CrbNggQ"
+      "jwt": "eyJhbGciOiJFUzI1NksiLCJraWQiOiJKVXZwbGxNRVlVWjJqb081OVVOdWlfWFlEcXhWcWlGTExBSjhrbFd1UEJ3In0.eyJpc3MiOiJkaWQ6YnRjcjp4eGNsLWx6cHEtcTgzYS0wZDUiLCJkb21haW4iOiJpZGVudGl0eS5mb3VuZGF0aW9uIiwiZXhwIjoxOTI4OTI5Njg5LCJpYXQiOjE1Njg5MzMyODl9.vhcfkJO8idTyQi4iUZ4hw57Jj9LX0lPD3XMcsTdYtqIpt-GLifm6ghrqs4p0snDG6kmPaFehtwkN8t1a-s167A"
     }
   }
 }

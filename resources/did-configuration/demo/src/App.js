@@ -34,8 +34,8 @@ class App extends React.Component {
       const url = new URL(didConfigUri);
       const config = await getJson(didConfigUri);
       return Promise.all(
-        Object.keys(config.claims).map(async did => {
-          const jwt = config.claims[did].jwt;
+        Object.keys(config.entries).map(async did => {
+          const jwt = config.entries[did].jwt;
           const publicKey = await getPublicKeyFromJwt(jwt);
           const verified = await ES256K.JWT.verify(jwt, publicKey.publicKeyJwk);
           if (verified.iss === did) {
@@ -54,7 +54,7 @@ class App extends React.Component {
       );
     };
     await getAuthorizedDids(
-      window.location.origin + "/.well-known/did-configuration"
+      window.location.origin + "/.well-known/did-configuration.json"
     );
   }
   render() {
