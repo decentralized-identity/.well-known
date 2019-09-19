@@ -4,7 +4,7 @@ This repo contains proposals and links to proposals for `.well-known` uris relat
 
 ## .well-known/did-configuration
 
-### [Latest Spec](./resources/did-configuration/)
+### [Latest Spec](https://identity.foundation/.well-known/resources/did-configuration/)
 
 ### Example
 
