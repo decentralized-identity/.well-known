@@ -6,8 +6,11 @@ This repo contains proposals and links to proposals for `.well-known` uris relat
 
 ### [Latest Spec](./resources/did-configuration/)
 
-### Example: [https://identity.foundation/.well-known/did-configuration](https://identity.foundation/.well-known/did-configuration.json)
+### Example
 
-### [SPA Demo](https://identity.foundation/.well-known/resources/did-configuration/demo/build/index.html)
+- [https://identity.foundation/.well-known/did-configuration](https://identity.foundation/.well-known/did-configuration.json)
+- [jwt claim](https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NksiLCJraWQiOiJKVXZwbGxNRVlVWjJqb081OVVOdWlfWFlEcXhWcWlGTExBSjhrbFd1UEJ3In0.eyJpc3MiOiJkaWQ6YnRjcjp4eGNsLWx6cHEtcTgzYS0wZDUiLCJkb21haW4iOiJpZGVudGl0eS5mb3VuZGF0aW9uIiwiZXhwIjoxOTI4OTI2NTM3LCJpYXQiOjE1Njg5MzAxMzd9.bRBpvbbAwgDS__7TMXX9dDlIDWWRpFXiBQy3kh6HVxBa8DLV6hirQj5Wq-GvFYAb_PrsF8SxhaxPFr1CrbNggQ)
+
+### [Demo Single Page Web App](https://identity.foundation/.well-known/resources/did-configuration/demo/build/index.html)
 
 ### [Demo Development Instructions](./resources/did-configuration/demo/README.md)
