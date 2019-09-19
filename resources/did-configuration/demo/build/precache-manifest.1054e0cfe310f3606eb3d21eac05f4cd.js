@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5513fddae941284426b39e185b7a4ea4",
+    "revision": "0824ee8e6752fc1b689359d3d26e3376",
     "url": "/.well-known/resources/did-configuration/demo/build/index.html"
   },
   {
