@@ -19,17 +19,20 @@ The format of the resource located at `/.well-known/did-configuration` shall be 
 
 ```js
 {
-  "entries": {
-    "did:btcr:123...": {
-      "jwt": BASE_64_ENCODED_JWT
+  "entries": [
+    {
+      "did": "did:btcr:123...",
+      "jwt": JWT_VALUE
     },
-    "did:ethr:456...": {
-      "jwt": BASE_64_ENCODED_JWT
+    {
+      "did": "did:ethr:456...",
+      "jwt": JWT_VALUE
     },
-    "did:sov:789...": {
-      "jwt": BASE_64_ENCODED_JWT
+    {
+      "did": "did:sov:789...",
+      "jwt": JWT_VALUE
     }
-  }
+  ]
 }
 ```
 
@@ -45,9 +48,7 @@ The top-level object MUST be a JSON object with the list of DID linkage assertio
 
 Each DID linkage entry under the `entries` property of the resource's top-level JWT object must contain the following properties and values:
 
-**`primary`** - Boolean value that, when true, signifies the DID entry is the primary identifier the domain/DID owner would like to associate with the domain under which the resource is located.
-
-**`jwt`** - Base64 encoded JWT signed by currently valid keys from the claimed DID. This object MUST include the following sub-properties:
+**`jwt`** - JWT payload signed by currently valid keys from the claimed DID. This object MUST include the following sub-properties:
 - `iss`: the DID unique ID string of the claimed DID
 - `domain`: the domain or subdomain the resource is located at
 - `exp`: the time after which the claim of DID-to-domain linkage MUST NOT be deemed valid
