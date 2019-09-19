@@ -12,6 +12,8 @@ Create a configuration:
 npm run config:create
 ```
 
+[example](https://jwt.io/#debugger-io?token=eyJhbGciOiJFUzI1NksiLCJraWQiOiJKVXZwbGxNRVlVWjJqb081OVVOdWlfWFlEcXhWcWlGTExBSjhrbFd1UEJ3In0.eyJpc3MiOiJkaWQ6YnRjcjp4eGNsLWx6cHEtcTgzYS0wZDUiLCJkb21haW4iOiJpZGVudGl0eS5mb3VuZGF0aW9uIiwiZXhwIjoxOTI4OTI2NTM3LCJpYXQiOjE1Njg5MzAxMzd9.bRBpvbbAwgDS__7TMXX9dDlIDWWRpFXiBQy3kh6HVxBa8DLV6hirQj5Wq-GvFYAb_PrsF8SxhaxPFr1CrbNggQ)
+
 Verify a configuration:
 
 ```

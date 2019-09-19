@@ -25,7 +25,7 @@ const defaultExpiresInHours = 99999;
 (async () => {
   const innerPayload = {
     iss: "did:btcr:xxcl-lzpq-q83a-0d5",
-    domain: "well-known.transmute-did.com",
+    domain: "identity.foundation",
     exp: Math.floor(Date.now() / 1000) + 60 * 60 * defaultExpiresInHours
   };
   const domainClaimJwt = await ES256K.JWT.sign(innerPayload, privateJWK);
@@ -48,7 +48,7 @@ const defaultExpiresInHours = 99999;
   const decodedStr = JSON.stringify(outerPayload, null, 2);
 
   fs.writeFileSync(
-    path.resolve(__dirname, "../public/.well-known/did-configuration"),
+    path.resolve(__dirname, "../../../../did-configuration"),
     decodedStr
   );
 })();

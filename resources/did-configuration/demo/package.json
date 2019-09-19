@@ -2,7 +2,7 @@
   "name": "demo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://well-known.transmute-did.com",
+  "homepage": "https://identity.foundation/.well-known/resources/did-configuration/demo/build/",
   "dependencies": {
     "@transmute/es256k-jws-ts": "0.0.4",
     "react": "^16.8.6",
@@ -13,7 +13,7 @@
     "config:create": "node ./scripts/create_did_configuration.js",
     "config:verify": "node ./scripts/verify_did_configuration.js",
     "start": "react-scripts start",
-    "build": "react-scripts build && mv ./build/* ../../docs",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
