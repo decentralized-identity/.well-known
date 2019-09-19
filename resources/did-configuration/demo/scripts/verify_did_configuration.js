@@ -33,19 +33,19 @@ const getPublicKeyFromJwt = async jwt => {
   const config = JSON.parse(
     fs
       .readFileSync(
-        path.resolve(__dirname, "../public/.well-known/did-configuration")
+        path.resolve(__dirname, "../public/.well-known/did-configuration.json")
       )
       .toString()
   );
-  Object.keys(config.claims).forEach(async did => {
-    const jwt = config.claims[did].jwt;
+  config.entries.forEach(async entry => {
+    const jwt = entry.jwt;
 
     const publicKey = await getPublicKeyFromJwt(jwt);
 
     const verified = await ES256K.JWT.verify(jwt, publicKey.publicKeyJwk);
 
-    if (verified.iss === did) {
-      console.log(did, " is authorized for: ", verified.domain);
+    if (verified.iss === entry.did) {
+      console.log(entry.did, " is authorized for: ", verified.domain);
     }
   });
 })();

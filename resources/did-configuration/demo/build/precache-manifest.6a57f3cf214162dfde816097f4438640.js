@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d8dc8be6f979f36c4e144d50131c931b",
+    "revision": "54b80dbb268578fc455306ea21ca0839",
     "url": "/.well-known/resources/did-configuration/demo/build/index.html"
   },
   {
-    "revision": "8651cd83106811a38899",
+    "revision": "62e167711817904280a7",
     "url": "/.well-known/resources/did-configuration/demo/build/static/css/main.5babb1a5.chunk.css"
   },
   {
-    "revision": "dca709f253c97a5f5b20",
-    "url": "/.well-known/resources/did-configuration/demo/build/static/js/2.196d80a3.chunk.js"
+    "revision": "811b41951b2b9fee71b5",
+    "url": "/.well-known/resources/did-configuration/demo/build/static/js/2.4481a278.chunk.js"
   },
   {
-    "revision": "8651cd83106811a38899",
-    "url": "/.well-known/resources/did-configuration/demo/build/static/js/main.95c5f910.chunk.js"
+    "revision": "62e167711817904280a7",
+    "url": "/.well-known/resources/did-configuration/demo/build/static/js/main.f3cd3434.chunk.js"
   },
   {
     "revision": "5adf0220eed25fce7c51",
