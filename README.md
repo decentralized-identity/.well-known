@@ -8,4 +8,4 @@ This repo contains proposals and links to proposals for `.well-known` uris relat
 
 ### Example: [https://identity.foundation/.well-known/did-configuration](https://identity.foundation/.well-known/did-configuration.json)
 
-### [SPA Demo](./resources/did-configuration/demo/build)
+### [SPA Demo](https://identity.foundation/.well-known/resources/did-configuration/demo/build/index.html)
