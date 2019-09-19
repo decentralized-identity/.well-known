@@ -2,10 +2,12 @@
 
 This repo contains proposals and links to proposals for `.well-known` uris related to DIDs, Hubs and Agents. See [rfc5785](https://tools.ietf.org/html/rfc5785) for more details on Defining Well-Known Uniform Resource Identifiers.
 
-### [Latest Spec](./resources/did-configuration/spec.html)
+## .well-known/did-configuration
 
-### [Read Me](./resources/did-configuration/README.md)
+### [Latest Spec](./resources/did-configuration/)
 
 ### Example: [https://identity.foundation/.well-known/did-configuration](https://identity.foundation/.well-known/did-configuration.json)
 
 ### [SPA Demo](https://identity.foundation/.well-known/resources/did-configuration/demo/build/index.html)
+
+### [Demo Development Instructions](./resources/did-configuration/demo/README.md)
