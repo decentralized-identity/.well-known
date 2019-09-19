@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/.well-known/resources/did-configuration/demo/build/static/css/main.5babb1a5.chunk.css",
+    "main.js": "/.well-known/resources/did-configuration/demo/build/static/js/main.a53aac5a.chunk.js",
+    "main.js.map": "/.well-known/resources/did-configuration/demo/build/static/js/main.a53aac5a.chunk.js.map",
+    "runtime~main.js": "/.well-known/resources/did-configuration/demo/build/static/js/runtime~main.c4f38411.js",
+    "runtime~main.js.map": "/.well-known/resources/did-configuration/demo/build/static/js/runtime~main.c4f38411.js.map",
+    "static/js/2.196d80a3.chunk.js": "/.well-known/resources/did-configuration/demo/build/static/js/2.196d80a3.chunk.js",
+    "static/js/2.196d80a3.chunk.js.map": "/.well-known/resources/did-configuration/demo/build/static/js/2.196d80a3.chunk.js.map",
+    "index.html": "/.well-known/resources/did-configuration/demo/build/index.html",
+    "precache-manifest.3c2eb892bb236e0708b6bfe8cd19a2c7.js": "/.well-known/resources/did-configuration/demo/build/precache-manifest.3c2eb892bb236e0708b6bfe8cd19a2c7.js",
+    "service-worker.js": "/.well-known/resources/did-configuration/demo/build/service-worker.js",
+    "static/css/main.5babb1a5.chunk.css.map": "/.well-known/resources/did-configuration/demo/build/static/css/main.5babb1a5.chunk.css.map"
+  }
+}
