@@ -206,7 +206,7 @@
 
         <div class="note" role="note">
           <p>
-            If the resource processing entity is not looking for the presence of a specific DID, or intending to validate a specific DID in `entities` array of Domain Linkage Assertions, the resource processing entity SHOULD iterate the array of Domain Linkage Assertions beginning at 0 index. This normative iteration from 0 index is intended to allow domain controllers to order their Domain Linkage Assertions in accordance with a known processing order, in cases where order may matter to the domain controller. An example of this the case where a domain controller has a primary signing DID that is the likely target of interest for the vast majority of relying parties who seek to validate a credential based on the DIDs associated with a domain via the DID Configuration resource.
+            If the resource processing entity is not looking for the presence of a specific DID, or intending to validate a specific DID in the `entities` array of Domain Linkage Assertions, the resource processing entity SHOULD iterate the array of Domain Linkage Assertions beginning at 0 index. This normative iteration from 0 index is intended to allow domain controllers to order their Domain Linkage Assertions in accordance with a known processing order, in cases where order may matter to the domain controller. An example of this the case where a domain controller has a primary signing DID that is the likely target of interest for the vast majority of relying parties who seek to validate a credential based on the DIDs associated with a domain.
           </p>
         </div>
     </section>
