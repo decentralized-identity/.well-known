@@ -181,7 +181,7 @@
     <section>
         <h2>Validation of Domain Linkage Assertions</h2>
         <p>
-          After fetching and validating the resource in accordance with the steps enumerated in the <a href="#resource_validation">Resource Fetch and Validation</a> section above, process Domain Linkage Assertions as follows:
+          After fetching and validating the resource via the <a href="#resource_validation">Resource Fetch and Validation</a> process enumerated above, the processing entity MAY choose to validate any of Domain Linkage Assertions it contains. Domain Linkage Assertions are independent from one another, thus one being valid or invalid does not affect the state of the others. For a Domain Linkage Assertions to be deemed valid, it MUST be successfully processed in accordance with the following steps:
         </p>
         <ol>
           <li>
@@ -203,6 +203,10 @@
             Once all properties in the JWT have been parsed in accordance with the preceding rules, the implementer MUST perform resolution of the DID specified in the `iss` property and validate the signature of the JWT against the authentication material (e.g. public keys) located in resolved DID Document.
           </li>
         </ol>
+
+        <p>
+          In the case an entry fails validation against any of the criteria enumerated above, the single entry that failed will be deemed invalid, and the validation implementation MUST produce an error to that effect. If an entry fails validation during an iteration of the entries by the processing entity, there is no normative implication about the validity of other entries, and the choice to continue iteration and validation of further entries is at the election of the processing entity.
+        </p>
 
         <div class="note" role="note">
           <p>
