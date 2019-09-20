@@ -34,11 +34,12 @@ const defaultExpiresInHours = 99999;
     // typ: "jwt",
     // iss: "did:btcr:xxcl-lzpq-q83a-0d5",
     // exp: Math.floor(Date.now() / 1000) + 60 * 60 * defaultExpiresInHours
-    claims: {
-      "did:btcr:xxcl-lzpq-q83a-0d5": {
+    entries: [
+      {
+        did: "did:btcr:xxcl-lzpq-q83a-0d5",
         jwt: domainClaimJwt
       }
-    }
+    ]
   };
 
   // const wellKnownDidConfigJwt = await ES256K.JWT.sign(outerPayload, privateJWK);
@@ -48,7 +49,7 @@ const defaultExpiresInHours = 99999;
   const decodedStr = JSON.stringify(outerPayload, null, 2);
 
   fs.writeFileSync(
-    path.resolve(__dirname, "../../../../did-configuration"),
+    path.resolve(__dirname, "../public/.well-known/did-configuration.json"),
     decodedStr
   );
 })();

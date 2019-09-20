@@ -13,7 +13,7 @@
     "config:create": "node ./scripts/create_did_configuration.js",
     "config:verify": "node ./scripts/verify_did_configuration.js",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && cp ./build/.well-known/did-configuration.json ../../../did-configuration.json",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

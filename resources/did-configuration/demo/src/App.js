@@ -32,36 +32,55 @@ class App extends React.Component {
   async componentWillMount() {
     const getAuthorizedDids = async didConfigUri => {
       const url = new URL(didConfigUri);
+
       const config = await getJson(didConfigUri);
+
+      this.setState({
+        wellKnownUri: didConfigUri,
+        config
+      });
       return Promise.all(
-        Object.keys(config.claims).map(async did => {
-          const jwt = config.claims[did].jwt;
+        config.entries.map(async entry => {
+          const jwt = entry.jwt;
           const publicKey = await getPublicKeyFromJwt(jwt);
           const verified = await ES256K.JWT.verify(jwt, publicKey.publicKeyJwk);
-          if (verified.iss === did) {
-            console.log(did, " is authorized for: ", verified.domain);
+          if (verified.iss === entry.did) {
+            console.log(entry.did, " is authorized for: ", verified.domain);
             this.setState({
-              [did]: {
-                verified,
-                origin: url.hostname,
-                is_claim_for_origin: url.hostname === verified.domain
+              verified: {
+                [entry.did]: {
+                  verified,
+                  origin: url.hostname,
+                  is_claim_for_origin: url.hostname === verified.domain
+                }
               }
             });
-            return did;
+            return entry.did;
           }
           return undefined;
         })
       );
     };
     await getAuthorizedDids(
-      window.location.origin + "/.well-known/did-configuration"
+      window.location.origin + "/.well-known/did-configuration.json"
     );
   }
   render() {
     return (
       <div>
         <h1>.well-known/did-configuration</h1>
-        <pre>{JSON.stringify(this.state, null, 2)}</pre>
+
+        <h2>URI</h2>
+        <a href={this.state.wellKnownUri}>{this.state.wellKnownUri}</a>
+
+        <br />
+        <h2>Configuration</h2>
+
+        <pre>{JSON.stringify(this.state.config, null, 2)}</pre>
+        <br />
+
+        <h2>Verified</h2>
+        <pre>{JSON.stringify(this.state.verified, null, 2)}</pre>
       </div>
     );
   }
