@@ -5,17 +5,19 @@
     {
       "id": "did:web:identity.foundation#ethereum",
       "type": "Secp256k1VerificationKey2018",
-      "owner": "did:web:identity.foundation",
+      "controller": "did:web:identity.foundation",
       "ethereumAddress": "0xb9c5714089478a327f09197987f16f9e5d936e8a"
     },
     {
       "id": "did:web:identity.foundation#satoshi",
       "type": "EcdsaSecp256k1VerificationKey2019",
+      "controller": "did:web:identity.foundation",
       "publicKeyHex": "03195588392023a8a3af506660439d555971f0447b63616aa3c8272761310cf960"
     },
     {
       "id": "did:web:identity.foundation#key-JUvpllMEYUZ2joO59UNui_XYDqxVqiFLLAJ8klWuPBw",
       "type": "EcdsaSecp256k1VerificationKey2019",
+      "controller": "did:web:identity.foundation",
       "publicKeyJwk": {
         "crv": "secp256k1",
         "kid": "JUvpllMEYUZ2joO59UNui_XYDqxVqiFLLAJ8klWuPBw",
