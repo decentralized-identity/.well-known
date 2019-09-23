@@ -14,3 +14,13 @@ This repo contains proposals and links to proposals for `.well-known` uris relat
 ### [Demo Single Page Web App](https://identity.foundation/.well-known/resources/did-configuration/demo/build/index.html)
 
 ### [Demo Development Instructions](./resources/did-configuration/demo/README.md)
+
+## .well-known/did.json
+
+Needs to be added to the universal resolver. See links below for contribution.
+
+### [Example](https://identity.foundation/.well-known/did.json)
+
+### [Latest Spec](https://github.com/w3c-ccg/did-method-web)
+
+### [Resolver](https://github.com/decentralized-identity/web-did-resolver)
