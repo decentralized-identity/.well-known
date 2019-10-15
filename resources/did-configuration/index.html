@@ -33,6 +33,11 @@
           url: "https://www.linkedin.com/in/or13b/",
           company: "Transmute",
           companyURL: "https://www.transmute.industries/"
+        },{
+          name: "Tobias Looker",
+          url: "https://www.linkedin.com/in/tplooker/",
+          company: "Mattr",
+          companyURL: "https://www.mattr.global/"
         }],
         github: "https://github.com/decentralized-identity/.well-known",
         edDraftURI: "https://identity.foundation/.well-known/resources/did-configuration/",
@@ -45,10 +50,13 @@
 
     <section id='abstract'>
       <p>
-        Making it possible to connect existing systems and <a href="https://w3c-ccg.github.io/did-spec">Decentralized Identifiers</a> (DIDs) is an important undertaking that can aid in bootstrapping adoption and usefulness of DIDs. One such form of connection is the ability of a DID controller to prove they are the same entity that controls an Internet domain.
+        Making it possible to connect existing systems and <a href="https://w3c.github.io/did-spec/">Decentralized Identifiers</a> (DIDs) is an important undertaking that can aid in bootstrapping adoption and usefulness of DIDs. One such form of connection is the ability of a DID controller to prove they are the same entity that controls an Internet domain.
       </p>
       <p>
         The DID Configuration resource provides proof of a bi-directional relationship between the controller of an Internet domain and a DID via cryptographically verifiable signatures that are linked to a DID's key material. This document describes the data format of the resource and the resource location at which Internet domain controllers can publish their DID Configuration. 
+      </p>
+      <p>
+        Due to the location of the DID Configuration resource, discovery of associated Decentralized Identifiers against a domain is trivial. However, the inverse (i.e given a DID-URI discover the associated domains) is deemed out of scope.
       </p>
     </section>
 
@@ -195,19 +203,22 @@
             The assertion object MUST contain the property `did`, and the value MUST be a valid <a href="https://w3c-ccg.github.io/did-spec/#generic-did-syntax">DID URI</a>
           </li>
           <li>
-            The assertion object MUST contain the property `jwt`, and the value MUST be a Base64 string that decodes to a valid JWT
+            The assertion object MUST contain the property `jwt`, and the value MUST be a <a href="https://www.rfc-editor.org/rfc/rfc7515#section-3.1">compact serialization</a> form of a JWT
           </li>
           <li>
             The JWT object MUST contain the `iss` property, and its value MUST match the DID URI present in the assertion's outer `did` property value (as noted in step 1 above)
           </li>
           <li>
-            The JWT object MUST contain the `domain` property, and its value MUST match the domain the resource was requested from.
+            The JWT object MUST contain the `domain` property, and its value MUST match the host portion of the URL the resource was requested from.
           </li>
           <li>
             The JWT object SHOULD contain the `exp` property, and if present, the value MUST be an epoch time that is greater than the current epoch time. If this property is not present, the assertion's future expiry is based on its continued presence in the resource (or its replacement with updated assertion that contains an expiry value).
           </li>
           <li>
-            Once all properties in the JWT have been parsed in accordance with the preceding rules, the implementer MUST perform resolution of the DID specified in the `iss` property and validate the signature of the JWT against the authentication material (e.g. public keys) located in resolved DID Document.
+            Once all properties in the JWT have been parsed in accordance with the preceding rules, the implementer MUST perform <a href="https://w3c-ccg.github.io/did-resolution/">DID resolution</a> on the DID URI specified in the `iss` property to obtain the associated DID document. 
+          </li>
+          <li>
+            Using the retrieved DID document, the implementer MUST validate the signature of the JWT against key material referenced in the <a href="https://w3c.github.io/did-spec/#authentication">authentication section</a> of the DID document. 
           </li>
         </ol>
 
@@ -217,7 +228,7 @@
 
         <div class="note" role="note">
           <p>
-            If the resource processing entity is not looking for the presence of a specific DID, or intending to validate a specific DID in the `entries` array of Domain Linkage Assertions, the resource processing entity SHOULD iterate the array of Domain Linkage Assertions beginning at 0 index. This normative iteration from 0 index is intended to allow domain controllers to order their Domain Linkage Assertions in accordance with a known processing order, in cases where order may matter to the domain controller. An example of this the case where a domain controller has a primary signing DID that is the likely target of interest for the vast majority of relying parties who seek to validate a credential based on the DIDs associated with a domain.
+            If the resource processing entity is not looking for the presence of a specific DID, or intending to validate a specific DID in the `entries` array of Domain Linkage Assertions, the resource processing entity SHOULD iterate the array of Domain Linkage Assertions beginning at 0 index. This normative iteration from 0 index is intended to allow domain controllers to order their Domain Linkage Assertions in accordance with a known processing order, in cases where order may matter to the domain controller. An example of this is the case where a domain controller has a primary signing DID that is the likely target of interest for the vast majority of relying parties who seek to validate an assertion based on the DIDs associated with a domain.
           </p>
         </div>
     </section>
