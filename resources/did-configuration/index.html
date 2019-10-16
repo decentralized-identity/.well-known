@@ -182,9 +182,6 @@
           Given a domain, `example.com`, fetch the DID Configuration resource via a `GET` request over secure HTTP connection (`https`) to the well-known location: `https://example.com/.well-known/did-configuration`
         </li>
         <li>
-          If the call is made to a subdomain of the base domain and the Well-Known endpoint results in a `307` redirect to the same Well-Known endpoint at the base domain of the site, the implementer SHOULD proceed to validate the DID linkage assertions it finds under the assumption that the domain controller intends to link the subdomain to the base domain's assertions.
-        </li>
-        <li>
           Provided the call returns a successful response, ensure the body is no larger than `8 kilobytes` in size.
         </li>
         <li>
