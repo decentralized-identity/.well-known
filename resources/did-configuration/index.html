@@ -106,7 +106,7 @@
     <section id="resource_definition">
       <h2>Resource Definition</h2>
       <p>
-        The DID Configuration resource is a JSON object containing references to DIDs, paired with cryptographically verifiable signatures from their associated keys. The resource MUST NOT exceed 8 kilobytes in total size.
+        The DID Configuration resource MUST be a valid JSON object containing Domain Linkage Assertions, which contain cryptographically verifiable claims that prove the same entity controls both the included DIDs and the domain the resource is located under. The resource MUST NOT exceed 8 kilobytes in total size; resources that exceed this maximum size are to be ignored by the processing entity.
       </p>
 
       <h3>Example</h3>
@@ -114,7 +114,6 @@
 <div class="example">
 <code><pre>
 {
-  "version": "0.1.0",
   "entries": [
     {
       "did": "did:btcr:123...",
@@ -139,22 +138,20 @@
 </code></pre>
 </div>
       
-      <h3>Properties and Values</h3>
+      <h3>Top-Level Properties</h3>
       <p>
-        The top-level object MUST be a JSON object with the list of DID linkage assertions included under the `entries` field, wherein each entry is a DID the domain owner is claiming to control. Each entry MUST contain the following properties and values:
+        The following properties are defined for use at the top-level of the resource - all other properties that are not defined below MUST be ignored:
       </p>
       <ul>
         <li>
-          `version` - Denotes the Semantic Version of the specification the resource should be processed under
-        </li>
-        <li>
-          `entries` - An array of domain linkage assertion objects
+          `entries` - The resource MUST contain this property, and its value MUST be an array of Domain Linkage Assertion objects.
         </li>
       </ul>
 
-      <h4>Domain Linkage Assertions</h4>
+      <h3>Domain Linkage Assertions</h3>
       <p>
-      Each DID linkage asserting under the `entries` property of the resource's top-level JWT object MUST contain the following properties and values:
+        The following properties are defined for Domain Linkage Assertion objects - all other properties that are not defined below MUST be ignored:
+      </p>
 
       <ul>
           <li>
@@ -162,7 +159,7 @@
           </li>
 
           <li>
-            `jwt` - MUST be present, and MUST be a JWT signed by the keys currently associated with the specified DID. The JWT assertion defines the following sub-properties:
+            `jwt` - MUST be present, and MUST be a JWT signed by the keys currently associated with the specified DID. The JWT assertion defines the following claims:
             <ul>
               <li>
                 `iss` - MUST be present, and MUST be a DID string that matches the DID string asserted in the DID Entry Object.
@@ -176,7 +173,6 @@
             </ul>
           </li>
         </ul>
-      </p>
     </section>
 
     <section id="resource_validation">
@@ -227,11 +223,13 @@
           In the case an entry fails validation against any of the criteria enumerated above, the single entry that failed will be deemed invalid, and the validation implementation MUST produce an error to that effect. If an entry fails validation during an iteration of the entries by the processing entity, there is no normative implication about the validity of other entries, and the choice to continue iteration and validation of further entries is at the election of the processing entity.
         </p>
 
-        <div class="note" role="note">
-          <p>
-            If the resource processing entity is not looking for the presence of a specific DID, or intending to validate a specific DID in the `entries` array of Domain Linkage Assertions, the resource processing entity SHOULD iterate the array of Domain Linkage Assertions beginning at 0 index. This normative iteration from 0 index is intended to allow domain controllers to order their Domain Linkage Assertions in accordance with a known processing order, in cases where order may matter to the domain controller. An example of this is the case where a domain controller has a primary signing DID that is the likely target of interest for the vast majority of relying parties who seek to validate an assertion based on the DIDs associated with a domain.
-          </p>
-        </div>
+    </section>
+
+    <section>
+      <h2>Processing Order of Domain Linkage Assertion Entries</h2>
+      <p>
+        If the resource processing entity is not looking for the presence of a specific DID, or intending to validate a specific DID in the `entries` array of Domain Linkage Assertions, the resource processing entity SHOULD iterate the array of Domain Linkage Assertions beginning at 0 index. This normative iteration from 0 index is intended to allow domain controllers to order their Domain Linkage Assertions in accordance with a known processing order, in cases where order may matter to the domain controller. An example of this is the case where a domain controller has a primary signing DID that is the likely target of interest for the vast majority of relying parties who seek to validate an assertion based on the DIDs associated with a domain.
+      </p>
     </section>
 
   </body>
