@@ -114,6 +114,7 @@
 <div class="example">
 <code><pre>
 {
+  "version": "0.1.0",
   "entries": [
     {
       "did": "did:btcr:123...",
@@ -143,6 +144,9 @@
         The top-level object MUST be a JSON object with the list of DID linkage assertions included under the `entries` field, wherein each entry is a DID the domain owner is claiming to control. Each entry MUST contain the following properties and values:
       </p>
       <ul>
+        <li>
+          `version` - Denotes the Semantic Version of the specification the resource should be processed under
+        </li>
         <li>
           `entries` - An array of domain linkage assertion objects
         </li>
