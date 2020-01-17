@@ -5,9 +5,19 @@
   "homepage": "https://identity.foundation/.well-known/resources/did-configuration/demo/build/",
   "dependencies": {
     "@transmute/es256k-jws-ts": "0.0.4",
+    "base64url": "^3.0.1",
+    "crypto-ld": "^3.7.0",
+    "did-jwt-vc": "^0.1.2",
+    "did-method-key": "^0.3.0",
+    "did-resolver": "^1.1.0",
+    "ethr-did": "^1.1.0",
+    "ethr-did-resolver": "^1.0.3",
+    "jsonld": "^2.0.1",
+    "jsonld-signatures": "^4.5.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "vc-js": "^0.2.0"
   },
   "scripts": {
     "config:create": "node ./scripts/create_did_configuration.js",
