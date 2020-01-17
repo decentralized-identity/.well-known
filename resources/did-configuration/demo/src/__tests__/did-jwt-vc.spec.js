@@ -22,9 +22,9 @@ describe("did-jwt-vc", () => {
     expect(
       verifiedVC.payload.vc.credentialSubject.domainLinkageAssertion.domain
     ).toBe("identity.foundation");
-    expect(
-      verifiedVC.payload.vc.credentialSubject.domainLinkageAssertion.iss
-    ).toBe("did:ethr:0xf1232f840f3ad7d23fcdaa84d6c66dac24efb198");
+    expect(verifiedVC.payload.iss).toBe(
+      "did:ethr:0xf1232f840f3ad7d23fcdaa84d6c66dac24efb198"
+    );
     expect(verifiedVC.issuer).toBe(
       "did:ethr:0xf1232f840f3ad7d23fcdaa84d6c66dac24efb198"
     );

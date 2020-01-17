@@ -2,7 +2,9 @@ const defaultExpiresInHours = 999999;
 
 export const vcJWTProofPayload = {
   sub: "did:ethr:0xf1232f840f3ad7d23fcdaa84d6c66dac24efb198",
+  iss: "did:ethr:0xf1232f840f3ad7d23fcdaa84d6c66dac24efb198",
   nbf: 1562950282,
+  exp: 1475878357,
   vc: {
     "@context": [
       "https://www.w3.org/2018/credentials/v1",
@@ -11,9 +13,7 @@ export const vcJWTProofPayload = {
     type: ["VerifiableCredential", "DomainLinkageAssertion"],
     credentialSubject: {
       domainLinkageAssertion: {
-        iss: "did:ethr:0xf1232f840f3ad7d23fcdaa84d6c66dac24efb198",
-        domain: "identity.foundation",
-        exp: 1475878357
+        domain: "identity.foundation"
       }
     }
   }
@@ -36,10 +36,8 @@ export const getDomainLinkageAssertionVCJWTProofPayload = (domain, did) => {
   payload.iss = did;
   payload.sub = did;
   payload.nbf = Math.floor(Date.now() / 1000);
-  payload.vc.credentialSubject.domainLinkageAssertion.iss = did;
+  payload.exp = Math.floor(Date.now() / 1000) + 60 * 60 * defaultExpiresInHours;
   payload.vc.credentialSubject.domainLinkageAssertion.domain = domain;
-  payload.vc.credentialSubject.domainLinkageAssertion.exp =
-    Math.floor(Date.now() / 1000) + 60 * 60 * defaultExpiresInHours;
   return payload;
 };
 
@@ -49,10 +47,7 @@ export const getDomainLinkageAssertionVCLinkedDataProofPayload = (
 ) => {
   const payload = { ...vcLinkedDataProofPayload };
   payload.issuer = did;
-  payload.credentialSubject.domainLinkageAssertion.iss = did;
   payload.credentialSubject.domainLinkageAssertion.domain = domain;
-  payload.credentialSubject.domainLinkageAssertion.exp =
-    Math.floor(Date.now() / 1000) + 60 * 60 * defaultExpiresInHours;
   return payload;
 };
 

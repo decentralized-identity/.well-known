@@ -31,8 +31,6 @@ describe("@transmute/es256k-jws-ts", () => {
     expect(verified.vc.credentialSubject.domainLinkageAssertion.domain).toBe(
       "identity.foundation"
     );
-    expect(verified.vc.credentialSubject.domainLinkageAssertion.iss).toBe(
-      "did:btcr:xxcl-lzpq-q83a-0d5"
-    );
+    expect(verified.iss).toBe("did:btcr:xxcl-lzpq-q83a-0d5");
   });
 });
