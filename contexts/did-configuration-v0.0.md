@@ -4,10 +4,6 @@
 
 ### Terminology
 
-<h4 id="DomainLinkageAssertion"><a href="#DomainLinkageAssertion">DomainLinkageAssertion</a></h4>
-
-A type of Verifiable Credential for making domain linkage assertions.
-
 <h4 id="domainLinkageAssertion"><a href="#domainLinkageAssertion">domainLinkageAssertion</a></h4>
 
 A claim object with fields for domain linkage assertions.

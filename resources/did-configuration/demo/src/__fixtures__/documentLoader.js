@@ -41,7 +41,9 @@ const documentLoader = async url => {
   }
 
   try {
-    return jsonld.documentLoader(url);
+    const res = await jsonld.documentLoader(url);
+    // console.log(url, res);
+    return res;
   } catch (e) {
     console.error(`No remote context support for ${url}`);
   }
