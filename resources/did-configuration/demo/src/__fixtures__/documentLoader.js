@@ -1,27 +1,15 @@
+import resolver from "./resolver";
+
 const jsonld = require("jsonld");
-const didKeyDriver = require("did-method-key").driver();
-
-const fs = require("fs");
-const path = require("path");
-
-const loadContext = relativePath => {
-  return JSON.parse(
-    fs.readFileSync(path.resolve(__dirname, relativePath)).toString()
-  );
-};
 
 const contexts = {
-  "https://identity.foundation/.well-known/contexts/did-configuration-v0.0.jsonld": loadContext(
-    "../../../../../contexts/did-configuration-v0.0.jsonld"
-  )
+  "https://identity.foundation/.well-known/contexts/did-configuration-v0.0.jsonld": require("./did-configuration-v0.0.json")
 };
 
 const documentLoader = async url => {
   // console.log(url);
-  if (url.startsWith("did:key:")) {
-    const didDocument = await didKeyDriver.get({
-      did: url
-    });
+  if (url.startsWith("did:")) {
+    const didDocument = await resolver.resolve(url);
 
     return {
       contextUrl: null, // this is for a context via a link header
@@ -52,4 +40,4 @@ const documentLoader = async url => {
   throw new Error(`No custom context support for ${url}`);
 };
 
-module.exports = documentLoader;
+export default documentLoader;

@@ -1,7 +1,7 @@
 import {
   getDomainLinkageAssertionVCLinkedDataProofPayload,
   documentLoader
-} from "../../__fixtures__";
+} from "../__fixtures__";
 
 const vc = require("vc-js");
 const jsigs = require("jsonld-signatures");
@@ -43,13 +43,7 @@ describe("linked-data-proof", () => {
     const result = await vc.verify({
       credential: signed,
       suite,
-      documentLoader,
-      // Why do I need to do this? Some kind of linked data or document loader bug?
-      controller: (
-        await documentLoader(
-          "did:key:z6Mktts3kfFWDrURs7fNpayz24LZeCGNvCaFMC6KkbeYpZvi"
-        )
-      ).document
+      documentLoader
     });
 
     expect(result.verified).toBe(true);

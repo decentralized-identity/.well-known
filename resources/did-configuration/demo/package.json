@@ -8,7 +8,7 @@
     "base64url": "^3.0.1",
     "crypto-ld": "^3.7.0",
     "did-jwt-vc": "^0.1.2",
-    "did-method-key": "^0.3.0",
+    "did-method-key": "^0.4.0",
     "did-resolver": "^1.1.0",
     "ethr-did": "^1.1.0",
     "ethr-did-resolver": "^1.0.3",

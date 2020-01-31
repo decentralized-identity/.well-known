@@ -12,14 +12,14 @@ A claim object with fields for domain linkage assertions.
 
 The domain being claimed to be linked to the DID in the domainLinkageAssertion.
 
-<h4 id="iss"><a href="#iss">iss</a></h4>
+<h4 id="entries"><a href="#entries">entries</a></h4>
 
-The DID of the issuer making the domain linkage assertion. This is should be the same as the subject, since domain linkage assertions are self attestations.
+The list of did entities that are linked with this domain configuration by vc data model proofs.
 
-<h4 id="sub"><a href="#sub">sub</a></h4>
+<h4 id="did"><a href="#did">did</a></h4>
 
-The DID of the subject of the domain linkage assertion. This is should be the same as the issuer, since domain linkage assertions are self attestations.
+A decentralized identifier that is linked via a domain linkage assertion vc.
 
-<h4 id="exp"><a href="#exp">exp</a></h4>
+<h4 id="vc"><a href="#vc">vc</a></h4>
 
-The expiration time of the domain linkage assertions.
+A verifiable credential proof for domain linkage assertion. Must be a valid VC-JWT or Linked Data Credential.
