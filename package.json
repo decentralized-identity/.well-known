@@ -1,0 +1,25 @@
+{
+  "name": "well-known",
+  "version": "1.0.0",
+  "description": "This repo contains proposals and links to proposals for `.well-known` uris related to DIDs, Hubs and Agents. See [rfc5785](https://tools.ietf.org/html/rfc5785) for more details on Defining Well-Known Uniform Resource Identifiers.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/decentralized-identity/.well-known.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/decentralized-identity/.well-known/issues"
+  },
+  "homepage": "https://github.com/decentralized-identity/.well-known#readme",
+  "devDependencies": {
+    "spec-up": "^0.9.29"
+  }
+}

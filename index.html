@@ -1,0 +1,401 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+            <title>Well Known DID Configuration</title>
+            <link href="./spec-up/css/custom-elements.css" rel="stylesheet">
+            <link href="./spec-up/css/prism.css" rel="stylesheet">
+            <link href="./spec-up/css/chart.css" rel="stylesheet">
+            <link href="./spec-up/css/font-awesome.css" rel="stylesheet">
+            <link href="./spec-up/css/index.css" rel="stylesheet">
+            <script src="./spec-up/js/custom-elements.js"></script>
+          </head>
+          <body features="source logo">
+            
+            <svg id="svg" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="github" viewBox="0 0 20 20">
+    <path d="M10 0.247c-5.522 0-10 4.477-10 10 0 4.418 2.865 8.167 6.839 9.489 0.5 0.093 0.683-0.217 0.683-0.481 0-0.238-0.009-1.026-0.014-1.862-2.782 0.605-3.369-1.18-3.369-1.18-0.455-1.156-1.11-1.463-1.11-1.463-0.907-0.621 0.069-0.608 0.069-0.608 1.004 0.071 1.533 1.031 1.533 1.031 0.892 1.529 2.339 1.087 2.91 0.831 0.090-0.646 0.349-1.087 0.635-1.337-2.221-0.253-4.556-1.11-4.556-4.942 0-1.092 0.391-1.984 1.030-2.684-0.104-0.252-0.446-1.269 0.097-2.646 0 0 0.84-0.269 2.751 1.025 0.798-0.222 1.653-0.333 2.503-0.337 0.85 0.004 1.706 0.115 2.505 0.337 1.909-1.294 2.747-1.025 2.747-1.025 0.544 1.378 0.202 2.395 0.098 2.646 0.641 0.7 1.029 1.592 1.029 2.684 0 3.841-2.339 4.687-4.566 4.934 0.359 0.31 0.678 0.919 0.678 1.852 0 1.338-0.012 2.415-0.012 2.744 0 0.266 0.18 0.578 0.687 0.48 3.971-1.324 6.833-5.071 6.833-9.488 0-5.523-4.477-10-10-10z"></path>
+  </symbol>
+  <symbol id="nested_list" viewBox="0 0 37 32">
+    <path d="M0 2.286c0-1.262 1.023-2.286 2.286-2.286s2.286 1.023 2.286 2.286c0 1.262-1.023 2.286-2.286 2.286s-2.286-1.023-2.286-2.286zM9.143 0h27.429v4.571h-27.429zM9.143 11.429c0-1.262 1.023-2.286 2.286-2.286s2.286 1.023 2.286 2.286c0 1.262-1.023 2.286-2.286 2.286s-2.286-1.023-2.286-2.286zM18.286 9.143h18.286v4.571h-18.286zM9.143 29.714c0-1.262 1.023-2.286 2.286-2.286s2.286 1.023 2.286 2.286c0 1.262-1.023 2.286-2.286 2.286s-2.286-1.023-2.286-2.286zM18.286 27.429h18.286v4.571h-18.286zM18.286 20.571c0-1.262 1.023-2.286 2.286-2.286s2.286 1.023 2.286 2.286c0 1.262-1.023 2.286-2.286 2.286s-2.286-1.023-2.286-2.286zM27.429 18.286h9.143v4.571h-9.143z"></path>
+  </symbol>
+</svg>
+
+            <main>
+
+              <header id="header" class="panel-header">
+                <span id="toc_toggle" panel-toggle="toc">
+                  <svg><use xlink:href="#nested_list"></use></svg>
+                </span>
+                <a id="logo" href="https://identity.foundation">
+                  <img src="https://rawcdn.githack.com/decentralized-identity/decentralized-identity.github.io/a3ca39717e440302d1fd99a796e7f00e1c42eb2d/images/logo-flat.svg" />
+                </a>
+                <span issue-count animate panel-toggle="repo_issues">
+                  <svg><use xlink:href="#github"></use></svg>
+                </span>
+              </header>
+
+              <article id="content">
+                <h1 id="spec-up-example"><a class="toc-anchor" href="#spec-up-example">§</a> Spec-Up Example</h1>
+<p><strong>Specification Status:</strong> Strawman</p>
+<p><strong>Latest Draft:</strong>
+<a href="https://csuwildcat.github.io/spec-up">https://csuwildcat.github.io/spec-up</a></p>
+<dl>
+<dt><strong>Editors:</strong></dt>
+<dd><a href="https://www.linkedin.com/in/dbuchner/">Daniel Buchner</a></dd>
+</dl>
+<!-- -->
+<dl>
+<dt><strong>Participate:</strong></dt>
+<dd><a href="https://github.com/csuwildcat/spec-up">GitHub repo</a></dd>
+<dd><a href="https://github.com/csuwildcat/spec-up/issues">File a bug</a></dd>
+<dd><a href="https://github.com/csuwildcat/spec-up/commits/master">Commit history</a></dd>
+</dl>
+<hr>
+<h2 id="abstract"><a class="toc-anchor" href="#abstract">§</a> Abstract</h2>
+<p>Let’s face it, other tools and generators for writing technical specifications aimed at standards bodies or industry groups are cumbersome, underwhelming, and lack the features you might want in a technical specification document. Spec-Up’s goal is to deliver you a better spec-writing experience with far less effort and tedium than other tools in the ecosystem. Spec-Up is a dead simple tool that auto-generates great specs from markdown. The version of markdown Spec-up uses contains all the same features you might expect from common implementations, like GitHub, but adds much more, including notice blocks, complex tables, charts, advanced syntax highlighting, UML diagrams, etc.</p>
+<h2 id="getting-started"><a class="toc-anchor" href="#getting-started">§</a> Getting Started</h2>
+<p>Using Spec-Up is easy peasy lemon squeezy:</p>
+<ol>
+<li><code>npm install spec-up</code></li>
+<li>Create a subdirectory in your project with two files:
+<ul>
+<li><code>spec.json</code> - add some basic config values, like your desired HTML page title, etc.</li>
+<li><code>spec.md</code> - write the markdown version of your spec here (duh)</li>
+</ul>
+</li>
+<li>In your main node.js file, drop in this bad boy: <code>require('spec-up')()</code></li>
+</ol>
+<p>Boom! That’s it. Spec-Up will auto-detect the location of your spec files and auto-generate your spec’s HTML version every time you hit save after editing your <code>spec.md</code> files. Did I mention you can have multiple specs located at any depth in your project and Spec-Up will crawl up in there and render all those specs like a damn boss? Well it does, because why the hell not.</p>
+<h2 id="feature-flexin"><a class="toc-anchor" href="#feature-flexin">§</a> Feature Flexin</h2>
+<p>In addition to all the normal markdown support (things like headings, lists, etc.), which you can see in this example document and all over GitHub readme pages, Spec-Up integrates a ton of other useful features that make it easy to articulate your technical content. Let’s checkout some of the goodies:</p>
+<h3 id="table-of-contents"><a class="toc-anchor" href="#table-of-contents">§</a> Table of Contents</h3>
+<p>&lt;-- You see that beautiful TOC over there to your left? (tap the header link to slide it out on mobile) Yeah, you don’t need to do a damn thing, that just magically appears based on your use of <code>h2</code>, <code>h3</code>, and <code>h4</code> headings.</p>
+<h3 id="notices"><a class="toc-anchor" href="#notices">§</a> Notices</h3>
+<pre>
+::: note Basic Note
+  Check this out.
+:::
+</pre>
+<div id="basic-note" class="notice note"><a class="notice-link" href="#basic-note"></a><p>Check this out.</p>
+</div>
+<pre>
+::: issue Issue Notice
+  I take issue with that, kind sir.
+:::
+</pre>
+<div id="issue-notice" class="notice issue"><a class="notice-link" href="#issue-notice"></a><p>I take issue with that, kind sir.</p>
+</div>
+<pre>
+::: warning Warning Notice
+  Houston, I think we have a problem
+:::
+</pre>
+<div id="warning-notice" class="notice warning"><a class="notice-link" href="#warning-notice"></a><p>Houston, I think we have a problem</p>
+</div>
+<pre>
+::: example Code Example
+  Put your code block here
+:::
+</pre>
+<div id="code-example" class="notice example"><a class="notice-link" href="#code-example"></a><p>Put your code block here</p>
+</div>
+<h3 id="tables"><a class="toc-anchor" href="#tables">§</a> Tables</h3>
+<pre>
+Stage | Direct Products | ATP Yields
+----: | --------------: | ---------:
+Glycolysis | 2 ATP ||
+^^ | 2 NADH | 3--5 ATP |
+Pyruvaye oxidation | 2 NADH | 5 ATP |
+Citric acid cycle | 2 ATP ||
+^^ | 6 NADH | 15 ATP |
+^^ | 2 FADH2 | 3 ATP |
+**30--32** ATP |||
+[Net ATP yields per hexose]
+</pre>
+<table>
+<caption id="netatpyieldsperhexose">Net ATP yields per hexose</caption>
+<thead>
+<tr>
+<th style="text-align:right">Stage</th>
+<th style="text-align:right">Direct Products</th>
+<th style="text-align:right">ATP Yields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right" rowspan="2">Glycolysis</td>
+<td style="text-align:right">2 ATP</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td style="text-align:right">2 NADH</td>
+<td style="text-align:right">3–5 ATP</td>
+</tr>
+<tr>
+<td style="text-align:right">Pyruvaye oxidation</td>
+<td style="text-align:right">2 NADH</td>
+<td style="text-align:right">5 ATP</td>
+</tr>
+<tr>
+<td style="text-align:right" rowspan="3">Citric acid cycle</td>
+<td style="text-align:right">2 ATP</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td style="text-align:right">6 NADH</td>
+<td style="text-align:right">15 ATP</td>
+</tr>
+<tr>
+<td style="text-align:right">2 FADH2</td>
+<td style="text-align:right">3 ATP</td>
+</tr>
+<tr>
+<td style="text-align:right"><strong>30–32</strong> ATP</td>
+<td style="text-align:right"></td>
+<td style="text-align:right"></td>
+</tr>
+</tbody>
+</table>
+<pre>
+|--|--|--|--|--|--|--|--|
+|♜|  |♝|♛|♚|♝|♞|♜|
+|  |♟|♟|♟|  |♟|♟|♟|
+|♟|  |♞|  |  |  |  | |
+|  |♗|  |  |♟|  |  | |
+|  |  |  |  |♙|  |  | |
+|  |  |  |  |  |♘|  | |
+|♙|♙|♙|♙|  |♙|♙|♙|
+|♖|♘|♗|♕|♔|  |  |♖|
+</pre>
+<table>
+<tbody>
+<tr>
+<td>♜</td>
+<td></td>
+<td>♝</td>
+<td>♛</td>
+<td>♚</td>
+<td>♝</td>
+<td>♞</td>
+<td>♜</td>
+</tr>
+<tr>
+<td></td>
+<td>♟</td>
+<td>♟</td>
+<td>♟</td>
+<td></td>
+<td>♟</td>
+<td>♟</td>
+<td>♟</td>
+</tr>
+<tr>
+<td>♟</td>
+<td></td>
+<td>♞</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>♗</td>
+<td></td>
+<td></td>
+<td>♟</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>♙</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>♘</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>♙</td>
+<td>♙</td>
+<td>♙</td>
+<td>♙</td>
+<td></td>
+<td>♙</td>
+<td>♙</td>
+<td>♙</td>
+</tr>
+<tr>
+<td>♖</td>
+<td>♘</td>
+<td>♗</td>
+<td>♕</td>
+<td>♔</td>
+<td></td>
+<td></td>
+<td>♖</td>
+</tr>
+</tbody>
+</table>
+<h3 id="diagrams"><a class="toc-anchor" href="#diagrams">§</a> Diagrams</h3>
+<pre>
+```mermaid
+sequenceDiagram
+  participant Alice
+  participant Bob
+  Alice->>Bob: Hey Bob
+  Bob-->>Alice: Great!
+  Alice->>Bob: How about you?
+  Bob-->>Alice: Doing well!
+```
+</pre>
+<div class="mermaid">sequenceDiagram
+  participant Alice
+  participant Bob
+  Alice->>Bob: Hey Bob
+  Bob-->>Alice: Great!
+  Alice->>Bob: How about you?
+  Bob-->>Alice: Doing well!</div><h3 id="charts"><a class="toc-anchor" href="#charts">§</a> Charts</h3>
+<pre>
+```chart
+{
+  "type": "pie",
+  "data": {
+    "labels": [
+      "Red",
+      "Blue",
+      "Yellow"
+    ],
+    "datasets": [
+      {
+        "data": [
+          300,
+          50,
+          100
+        ],
+        "backgroundColor": [
+          "#FF6384",
+          "#36A2EB",
+          "#FFCE56"
+        ],
+        "hoverBackgroundColor": [
+          "#FF6384",
+          "#36A2EB",
+          "#FFCE56"
+        ]
+      }
+    ]
+  }
+}
+```
+</pre>
+<canvas class="chartjs">{"type":"pie","data":{"labels":["Red","Blue","Yellow"],"datasets":[{"data":[300,50,100],"backgroundColor":["#FF6384","#36A2EB","#FFCE56"],"hoverBackgroundColor":["#FF6384","#36A2EB","#FFCE56"]}]}}</canvas><h3 id="syntax-highlighting"><a class="toc-anchor" href="#syntax-highlighting">§</a> Syntax Highlighting</h3>
+<pre>
+```json
+{
+  "@context": "https://www.w3.org/ns/did/v1",
+  "id": "did:example:123456789abcdefghi",
+  "authentication": [{
+    
+    "id": "did:example:123456789abcdefghi#keys-1",
+    "type": "RsaVerificationKey2018",
+    "controller": "did:example:123456789abcdefghi",
+    "publicKeyPem": "-----BEGIN PUBLIC KEY...END PUBLIC KEY-----\r\n"
+  }],
+  "service": [{
+    
+    "id":"did:example:123456789abcdefghi#vcs",
+    "type": "VerifiableCredentialService",
+    "serviceEndpoint": "https://example.com/vc/"
+  }]
+}
+```
+</pre>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"@context"</span><span class="token operator">:</span> <span class="token string">"https://www.w3.org/ns/did/v1"</span><span class="token punctuation">,</span>
+  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"did:example:123456789abcdefghi"</span><span class="token punctuation">,</span>
+  <span class="token property">"authentication"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"did:example:123456789abcdefghi#keys-1"</span><span class="token punctuation">,</span>
+      <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"RsaVerificationKey2018"</span><span class="token punctuation">,</span>
+      <span class="token property">"controller"</span><span class="token operator">:</span> <span class="token string">"did:example:123456789abcdefghi"</span><span class="token punctuation">,</span>
+      <span class="token property">"publicKeyPem"</span><span class="token operator">:</span> <span class="token string">"-----BEGIN PUBLIC KEY...END PUBLIC KEY-----\r\n"</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"service"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"did:example:123456789abcdefghi#vcs"</span><span class="token punctuation">,</span>
+      <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"VerifiableCredentialService"</span><span class="token punctuation">,</span>
+      <span class="token property">"serviceEndpoint"</span><span class="token operator">:</span> <span class="token string">"https://example.com/vc/"</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+              </article>    
+
+            </main>
+
+            <slide-panels id="slidepanels">
+              <slide-panel id="repo_issues" options="right" gap="1.5em">
+                <header class="panel-header">
+                  <svg><use xlink:href="#github"></use></svg>
+                  <span issue-count></span>
+                  <span class="repo-issue-toggle" panel-toggle="repo_issues">✕</span>
+                </header>
+                <ul id="repo_issue_list"></ul>
+              </slide-panel>
+
+              <slide-panel id="toc">
+                <header class="panel-header">
+                  <span panel-toggle="toc">✕</span>
+                </header>
+                <div id="toc_list">
+                  <ul class="toc">
+<li><a href="#abstract">Abstract</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#feature-flexin">Feature Flexin</a>
+<ul>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#notices">Notices</a></li>
+<li><a href="#tables">Tables</a></li>
+<li><a href="#diagrams">Diagrams</a></li>
+<li><a href="#charts">Charts</a></li>
+<li><a href="#syntax-highlighting">Syntax Highlighting</a></li>
+</ul>
+</li>
+</ul>
+
+                </div>
+              </slide-panel>
+              
+            </slide-panels>
+
+          </body>
+          <script>window.specConfig = {"logo":"https://rawcdn.githack.com/decentralized-identity/decentralized-identity.github.io/a3ca39717e440302d1fd99a796e7f00e1c42eb2d/images/logo-flat.svg","logo_link":"https://identity.foundation","source":{"host":"github","account":"decentralized-identity","repo":".well-known"},"title":"Well Known DID Configuration","output_path":"./","path":"did-configuration","rootRelativePrefix":"../","assetRelativePrefix":"../"}</script>
+          <script src="./spec-up/js/markdown-it.js"></script>
+          <script src="./spec-up/js/prism.js"></script>
+          <script src="./spec-up/js/mermaid.js"></script>
+          <script src="./spec-up/js/chart.js"></script>
+          <script src="./spec-up/js/index.js"></script>
+        </html>
+      
