@@ -1,5 +1,5 @@
 import React from "react";
-import * as ES256K from "@transmute/es256k-jws-ts";
+import { verifyDidConfiguration, getDecodedVc } from "./__fixtures__";
 
 const getJson = async url =>
   fetch(url, {
@@ -8,23 +8,6 @@ const getJson = async url =>
       Accept: "application/ld+json"
     }
   }).then(data => data.json());
-
-const getPublicKeyFromJwt = async jwt => {
-  const decodedClaim = await ES256K.JWT.decode(jwt, {
-    complete: true
-  });
-  const res = await getJson(
-    "https://uniresolver.io/1.0/identifiers/" + decodedClaim.payload.iss
-  );
-  const publicKeyFromResolver = res.methodMetadata.continuation.publicKey.find(
-    k => {
-      return (
-        k.id === decodedClaim.payload.iss + "#key-" + decodedClaim.header.kid
-      );
-    }
-  );
-  return publicKeyFromResolver;
-};
 
 class App extends React.Component {
   state = {};
@@ -39,20 +22,25 @@ class App extends React.Component {
         wellKnownUri: didConfigUri,
         config
       });
+
       return Promise.all(
         config.entries.map(async entry => {
-          const jwt = entry.jwt;
-          const publicKey = await getPublicKeyFromJwt(jwt);
-          const verified = await ES256K.JWT.verify(jwt, publicKey.publicKeyJwk);
-          if (verified.iss === entry.did) {
-            console.log(entry.did, " is authorized for: ", verified.domain);
+          const verified = await verifyDidConfiguration(config, entry.did);
+
+          if (verified) {
+            const decoded = await getDecodedVc(config, entry.did);
+            const domain =
+              decoded.credentialSubject.domainLinkageAssertion.domain;
+
+            console.log(entry.did, " is authorized for: ", domain);
             this.setState({
               verified: {
                 [entry.did]: {
                   verified,
                   origin: url.hostname,
-                  is_claim_for_origin: url.hostname === verified.domain
-                }
+                  is_claim_for_origin: url.hostname === domain
+                },
+                ...(this.state.verified || {})
               }
             });
             return entry.did;
@@ -61,6 +49,7 @@ class App extends React.Component {
         })
       );
     };
+
     await getAuthorizedDids(
       window.location.origin + "/.well-known/did-configuration.json"
     );
