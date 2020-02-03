@@ -43,3 +43,37 @@ customElements.define('slide-panel', class SidePanel extends HTMLElement {
     }
   }
 });
+
+customElements.define('detail-box', class DetailBox extends HTMLElement {
+  static get observedAttributes() {
+    return ['open'];
+  }
+  constructor() {
+    super();   
+    this.addEventListener('transitionend', e => {
+      // if (e.target === this && this.offsetHeight === 0) {
+      //   this.style.height = null;
+      // }
+    });
+    this.addEventListener('pointerup', e => {
+      console.log(e);
+      let header = e.target;
+      if (header.parentElement === this && header.tagName === 'HEADER') {
+        this.toggle();
+      }
+    })
+  }
+  toggle(){
+    this.toggleAttribute('open');
+  }
+  attributeChangedCallback(attr, last, current) {
+    switch(attr) {
+      case 'open':
+        // if (this.offsetHeight === 0) {
+
+        // }
+    }
+  }
+  
+});
+

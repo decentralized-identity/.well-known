@@ -20,6 +20,7 @@ let init = new Promise(async (resolve, reject) => {
       if (err) return reject(err);
       let config = JSON.parse(data);
           config.path = path;
+          config.destination = config.output_path || path;
           config.rootRelativePrefix = rootRelativePrefix;
           config.assetRelativePrefix = getRelativePrefix(config.output_path || path);
       gulp.watch(
@@ -107,7 +108,7 @@ async function render(config) {
         console.log(e);
       }
 
-      fs.writeFile(basePath + 'index.html', `
+      fs.writeFile(config.destination + (config.destination.match(/\//g) ? '' : '/') + 'index.html', `
         <!DOCTYPE html>
         <html lang="en">
           <head>
@@ -148,10 +149,12 @@ async function render(config) {
             </main>
 
             <slide-panels id="slidepanels">
-              <slide-panel id="repo_issues" options="right" gap="1.5em">
+              <slide-panel id="repo_issues" options="right">
                 <header class="panel-header">
-                  <svg><use xlink:href="#github"></use></svg>
-                  <span issue-count></span>
+                  <span>
+                    <svg><use xlink:href="#github"></use></svg>
+                    <span issue-count></span>
+                  </span>
                   <span class="repo-issue-toggle" panel-toggle="repo_issues">✕</span>
                 </header>
                 <ul id="repo_issue_list"></ul>
@@ -159,6 +162,7 @@ async function render(config) {
 
               <slide-panel id="toc">
                 <header class="panel-header">
+                  <span>Table of Contents</span>
                   <span panel-toggle="toc">✕</span>
                 </header>
                 <div id="toc_list">
@@ -171,7 +175,7 @@ async function render(config) {
           </body>
           <script>window.specConfig = ${JSON.stringify(config)}</script>
           <script src="${basePath}spec-up/js/markdown-it.js"></script>
-          <script src="${basePath}spec-up/js/prism.js"></script>
+          <script src="${basePath}spec-up/js/prism.js" data-manual></script>
           <script src="${basePath}spec-up/js/mermaid.js"></script>
           <script src="${basePath}spec-up/js/chart.js"></script>
           <script src="${basePath}spec-up/js/index.js"></script>

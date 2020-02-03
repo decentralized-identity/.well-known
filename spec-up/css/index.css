@@ -36,41 +36,48 @@ body {
   counter-reset: h2 toc1;
 }
 
-h1,h2,h3,h4,h5,h6 {
-  color: #004b88;
-}
-
 h1 {
   font-size: 2em;
   font-weight: bold;
 }
 
-h2, h3, h4 {
+main article h1,
+main article h2,
+main article h3,
+main article h4,
+main article h5,
+main article h6 {
+  color: #004b88;
+}
+
+main article h2,
+main article h3,
+main article h4 {
   display: flex;
   font-weight: 500;
   padding-top: 6vh;
   margin-top: -4vh;
 }
 
-h2 {
+main article h2 {
   counter-reset: h3 h4;
 }
 
-main h2:after {
+main article h2:after {
   counter-increment: h2;
   content: counter(h2) ".";
   padding: 0 0.4em 0 0.2em;
   order: -1;
 }
 
-main h3:after {
+main article h3:after {
   counter-increment: h3;
   content: counter(h2) "." counter(h3);
   padding: 0 0.45em 0 0.2em;
   order: -1;
 }
 
-main h4:after {
+main article h4:after {
   counter-increment: h4;
   content: counter(h2) "." counter(h3) "." counter(h4);
   padding: 0 0.5em 0 0.2em;
@@ -250,9 +257,15 @@ slide-panel > *:not(header):not(footer) {
   display: flex;
   align-items: center;
   height: var(--header-height);
-  min-height: var(--header-height);
-  padding: 0 0 0 0.7em;
 }
+
+.panel-header > * {
+  display: flex;
+  height: 100%;
+  padding: 0.1em 0.8em 0;
+  align-items: center;
+}
+
 
 .slide-panel {
   width: calc(100% - 1em);
@@ -342,6 +355,7 @@ slide-panel > *:not(header):not(footer) {
   margin: 1.5em 0 1.75em;
 }
 
+pre,
 code[class*="language-"],
 pre[class*="language-"] {
   font-size: 0.9em;
@@ -363,23 +377,16 @@ pre[class*="language-"] {
   z-index: 1;
 }
 
-#header > span {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding: 0 1em;
-  font-size: 0.8em;
-}
-
   #logo {
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     height: 100%;
-    padding: 0 0.5em;
+    padding: 0.5em; 
   }
 
   #logo img {
-    height: calc(var(--header-height) - 1em);
+    height: 100%;
   }
 
 
@@ -389,6 +396,7 @@ pre[class*="language-"] {
 
 #header #toc_toggle {
   display: none;
+  padding: 0 1em;
   border-right: 1px solid rgba(0,0,0,0.15);
 }
 
@@ -410,19 +418,18 @@ pre[class*="language-"] {
   border-left: 1px solid rgba(0,0,0,0.15);
 }
 
-#repo_issues header {
+#repo_issues > header {
   background: #eee;
   border-bottom: 1px solid #ddd;
 }
 
-#repo_issues header span:first-of-type {
+#repo_issues > header span:first-of-type {
   font-weight: bold;
   padding-top: 0.1em;
 }
 
-#repo_issues header .repo-issue-toggle {
+#repo_issues > header .repo-issue-toggle {
   margin-left: auto;
-  padding: 0 1em;
   color: inherit;
   font-weight: bold;
   text-decoration: none;
@@ -431,7 +438,7 @@ pre[class*="language-"] {
 #repo_issue_list {
   list-style: none;
   margin: 0;
-  padding: 1.25em;
+  padding: 0 1.25em 1.25em;
   font-size: 0.85em;
   overflow: auto;
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
@@ -450,14 +457,12 @@ pre[class*="language-"] {
     margin: 1em 0 0;
   }
 
-.repo-issue {
-  margin: 0 0 1.6em;
-  padding: 0 0 1.5em;
+.repo-issue detail-box {
   border-bottom: 1px solid #ddd;
 }
 
 .repo-issue-title {
-  position: relative;
+  padding: 1.5em 0 1.5em;
 }
 
 .repo-issue-title a {
@@ -483,13 +488,6 @@ pre[class*="language-"] {
   margin: 0 0.1em 0 0;
 }
 
-.repo-issue p {
-  line-clamp: 3; 
-  -webkit-line-clamp: 3;   
-  -webkit-box-orient: vertical;   
-  overflow: hidden; 
-}
-
 #toc {
   display: flex;
   flex-direction: column;
@@ -506,11 +504,6 @@ pre[class*="language-"] {
   border-bottom: 1px solid #004c8a;
   border-right: 1px solid #005fad;
 }
-
-  #toc header:before {
-    content: "Table of Contents";
-    padding-top: 0.1em;
-  }
 
   #toc header [panel-toggle] {
     display: none;

@@ -6,6 +6,5 @@
     "account": "decentralized-identity",
     "repo": ".well-known"
   },
-  "title": "Well Known DID Configuration",
-  "output_path": "./"
+  "title": "Well-Known DID Configuration"
 }

@@ -6,13 +6,13 @@
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-            <title>Well Known DID Configuration</title>
-            <link href="./spec-up/css/custom-elements.css" rel="stylesheet">
-            <link href="./spec-up/css/prism.css" rel="stylesheet">
-            <link href="./spec-up/css/chart.css" rel="stylesheet">
-            <link href="./spec-up/css/font-awesome.css" rel="stylesheet">
-            <link href="./spec-up/css/index.css" rel="stylesheet">
-            <script src="./spec-up/js/custom-elements.js"></script>
+            <title>Well-Known DID Configuration</title>
+            <link href="../spec-up/css/custom-elements.css" rel="stylesheet">
+            <link href="../spec-up/css/prism.css" rel="stylesheet">
+            <link href="../spec-up/css/chart.css" rel="stylesheet">
+            <link href="../spec-up/css/font-awesome.css" rel="stylesheet">
+            <link href="../spec-up/css/index.css" rel="stylesheet">
+            <script src="../spec-up/js/custom-elements.js"></script>
           </head>
           <body features="source logo">
             
@@ -47,6 +47,7 @@
 <dl>
 <dt><strong>Editors:</strong></dt>
 <dd><a href="https://www.linkedin.com/in/dbuchner/">Daniel Buchner</a></dd>
+<dd><a href="https://www.linkedin.com/in/dbuchner/">Orie Steele</a></dd>
 </dl>
 <!-- -->
 <dl>
@@ -356,10 +357,12 @@ sequenceDiagram
             </main>
 
             <slide-panels id="slidepanels">
-              <slide-panel id="repo_issues" options="right" gap="1.5em">
+              <slide-panel id="repo_issues" options="right">
                 <header class="panel-header">
-                  <svg><use xlink:href="#github"></use></svg>
-                  <span issue-count></span>
+                  <span>
+                    <svg><use xlink:href="#github"></use></svg>
+                    <span issue-count></span>
+                  </span>
                   <span class="repo-issue-toggle" panel-toggle="repo_issues">✕</span>
                 </header>
                 <ul id="repo_issue_list"></ul>
@@ -367,6 +370,7 @@ sequenceDiagram
 
               <slide-panel id="toc">
                 <header class="panel-header">
+                  <span>Table of Contents</span>
                   <span panel-toggle="toc">✕</span>
                 </header>
                 <div id="toc_list">
@@ -391,11 +395,11 @@ sequenceDiagram
             </slide-panels>
 
           </body>
-          <script>window.specConfig = {"logo":"https://rawcdn.githack.com/decentralized-identity/decentralized-identity.github.io/a3ca39717e440302d1fd99a796e7f00e1c42eb2d/images/logo-flat.svg","logo_link":"https://identity.foundation","source":{"host":"github","account":"decentralized-identity","repo":".well-known"},"title":"Well Known DID Configuration","output_path":"./","path":"did-configuration","rootRelativePrefix":"../","assetRelativePrefix":"../"}</script>
-          <script src="./spec-up/js/markdown-it.js"></script>
-          <script src="./spec-up/js/prism.js"></script>
-          <script src="./spec-up/js/mermaid.js"></script>
-          <script src="./spec-up/js/chart.js"></script>
-          <script src="./spec-up/js/index.js"></script>
+          <script>window.specConfig = {"logo":"https://rawcdn.githack.com/decentralized-identity/decentralized-identity.github.io/a3ca39717e440302d1fd99a796e7f00e1c42eb2d/images/logo-flat.svg","logo_link":"https://identity.foundation","source":{"host":"github","account":"decentralized-identity","repo":".well-known"},"title":"Well-Known DID Configuration","path":"did-configuration","destination":"did-configuration","rootRelativePrefix":"../","assetRelativePrefix":"../"}</script>
+          <script src="../spec-up/js/markdown-it.js"></script>
+          <script src="../spec-up/js/prism.js" data-manual></script>
+          <script src="../spec-up/js/mermaid.js"></script>
+          <script src="../spec-up/js/chart.js"></script>
+          <script src="../spec-up/js/index.js"></script>
         </html>
       

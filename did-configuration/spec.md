@@ -7,6 +7,8 @@
 
 **Editors:**
 ~ [Daniel Buchner](https://www.linkedin.com/in/dbuchner/)
+~ [Orie Steele](https://www.linkedin.com/in/dbuchner/)
+
 
 <!-- -->
 

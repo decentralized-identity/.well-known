@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/decentralized-identity/.well-known#readme",
   "devDependencies": {
-    "spec-up": "^0.9.29"
+    "spec-up": "^0.9.34"
   }
 }
