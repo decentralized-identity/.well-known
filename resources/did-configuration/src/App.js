@@ -7,8 +7,6 @@ const ES256K = require("@transmute/es256k-jws-ts");
 
 const { Ed25519Signature2018 } = jsigs.suites;
 
-const resolver = require("./fixtures/resolver");
-
 const getJson = async (url) =>
   fetch(url, {
     headers: {
@@ -17,6 +15,18 @@ const getJson = async (url) =>
     method: "get",
   }).then((data) => data.json());
 
+const resolver = {
+  resolve: async (didUri) => {
+    const res = await getJson(
+      "https://uniresolver.io/1.0/identifiers/" + didUri
+    );
+
+    if (res.didDocument === null) {
+      throw new Error("Could not resolve DID with Universal Resolver.");
+    }
+    return res.didDocument;
+  },
+};
 const suites = {
   Ed25519Signature2018: new Ed25519Signature2018(),
 };
