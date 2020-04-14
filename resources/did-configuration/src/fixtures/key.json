@@ -1,0 +1,18 @@
+{
+  "id": "did:web:identity.foundation#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A",
+  "type": "JwsVerificationKey2020",
+  "controller": "did:web:identity.foundation",
+  "publicKeyJwk": {
+    "crv": "Ed25519",
+    "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ",
+    "kty": "OKP",
+    "kid": "did:web:identity.foundation#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A"
+  },
+  "privateKeyJwk": {
+    "crv": "Ed25519",
+    "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ",
+    "d": "tP7VWE16yMQWUO2G250yvoevfbfxY25GjHglTP3ZOyU",
+    "kty": "OKP",
+    "kid": "did:web:identity.foundation#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A"
+  }
+}

@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8" />
     <title>Well Known DID Configuration</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="images/favicon-16x16.png"
+    />
     <style>
       #subtitle ~ h2,
       .copyright,
@@ -11,227 +16,611 @@
         display: none;
       }
     </style>
-    <script src='https://www.w3.org/Tools/respec/respec-w3c-common' class='remove'></script>
-    <script class='remove'>
+    <script
+      src="https://www.w3.org/Tools/respec/respec-w3c-common"
+      class="remove"
+    ></script>
+    <script class="remove">
       var respecConfig = {
         subtitle: "DIF Working Group Approved Draft",
         wg: "Identifiers & Discovery Working Group",
-        logos: [{
-          src: 'https://raw.githubusercontent.com/decentralized-identity/decentralized-identity.github.io/master/images/logo-large.png',
-          href: "https://identity.foundation/",
-          alt: "Decentralized Identity Foundation",
-          width: 200,
-          id: 'dif-logo',
-        }],
-        editors: [{
-          name: "Daniel Buchner",
-          url: "https://www.linkedin.com/in/dbuchner/",
-          company: "Microsoft",
-          companyURL: "https://www.microsoft.com/en-us/security/technology/own-your-identity"
-        },{
-          name: "Orie Steele",
-          url: "https://www.linkedin.com/in/or13b/",
-          company: "Transmute",
-          companyURL: "https://www.transmute.industries/"
-        },{
-          name: "Tobias Looker",
-          url: "https://www.linkedin.com/in/tplooker/",
-          company: "Mattr",
-          companyURL: "https://www.mattr.global/"
-        }],
+        logos: [
+          {
+            src:
+              "https://raw.githubusercontent.com/decentralized-identity/decentralized-identity.github.io/master/images/logo-large.png",
+            href: "https://identity.foundation/",
+            alt: "Decentralized Identity Foundation",
+            width: 200,
+            id: "dif-logo",
+          },
+        ],
+        editors: [
+          {
+            name: "Daniel Buchner",
+            url: "https://www.linkedin.com/in/dbuchner/",
+            company: "Microsoft",
+            companyURL:
+              "https://www.microsoft.com/en-us/security/technology/own-your-identity",
+          },
+          {
+            name: "Orie Steele",
+            url: "https://www.linkedin.com/in/or13b/",
+            company: "Transmute",
+            companyURL: "https://www.transmute.industries/",
+          },
+          {
+            name: "Tobias Looker",
+            url: "https://www.linkedin.com/in/tplooker/",
+            company: "Mattr",
+            companyURL: "https://www.mattr.global/",
+          },
+        ],
         github: "https://github.com/decentralized-identity/.well-known",
-        edDraftURI: "https://identity.foundation/.well-known/resources/did-configuration/",
-        shortName: "did-configuration"
+        edDraftURI:
+          "https://identity.foundation/.well-known/resources/did-configuration/",
+        shortName: "did-configuration",
       };
     </script>
   </head>
 
   <body>
-
-    <section id='abstract'>
+    <section id="abstract">
       <p>
-        Making it possible to connect existing systems and <a href="https://w3c.github.io/did-spec/">Decentralized Identifiers</a> (DIDs) is an important undertaking that can aid in bootstrapping adoption and usefulness of DIDs. One such form of connection is the ability of a DID controller to prove they are the same entity that controls an Internet domain.
+        Making it possible to connect existing systems and
+        <a href="https://w3c.github.io/did-spec/">Decentralized Identifiers</a>
+        (DIDs) is an important undertaking that can aid in bootstrapping
+        adoption and usefulness of DIDs. One such form of connection is the
+        ability of a DID controller to prove they are the same entity that
+        controls an Internet domain.
       </p>
       <p>
-        The DID Configuration resource provides proof of a bi-directional relationship between the controller of an Internet domain and a DID via cryptographically verifiable signatures that are linked to a DID's key material. This document describes the data format of the resource and the resource location at which Internet domain controllers can publish their DID Configuration. 
+        The DID Configuration resource provides proof of a bi-directional
+        relationship between the controller of an Internet domain and a DID via
+        cryptographically verifiable signatures that are linked to a DID's key
+        material. This document describes the data format of the resource and
+        the resource location at which Internet domain controllers can publish
+        their DID Configuration.
       </p>
       <p>
-        Due to the location of the DID Configuration resource, discovery of associated Decentralized Identifiers against a domain is trivial. However, the inverse (i.e given a DID discover the associated domains) is deemed out of scope.
+        Due to the location of the DID Configuration resource, discovery of
+        associated Decentralized Identifiers against a domain is trivial.
+        However, the inverse (i.e given a DID discover the associated domains)
+        is deemed out of scope.
       </p>
     </section>
 
-    <section id='sotd'>
+    <section id="sotd">
       <p>
-        DID Configuration is a draft specification being developed within the <a href="https://identity.foundation">Decentralized Identity Foundation</a> (DIF), and intended for registration with IANA as a Well-Known resource. This spec will be updated to reflect relevant changes, and participants are encouraged to contribute at the following repository location: <a href="https://github.com/decentralized-identity/.well-known">https://github.com/decentralized-identity/.well-known</a>
+        DID Configuration is a draft specification being developed within the
+        <a href="https://identity.foundation"
+          >Decentralized Identity Foundation</a
+        >
+        (DIF), and intended for registration with IANA as a Well-Known resource.
+        This spec will be updated to reflect relevant changes, and participants
+        are encouraged to contribute at the following repository location:
+        <a href="https://github.com/decentralized-identity/.well-known"
+          >https://github.com/decentralized-identity/.well-known</a
+        >
       </p>
     </section>
 
     <section>
-        <h2>Terminology</h2>
-        <table class="simple">
-          <thead>
-            <tr>
-              <th style="min-width: 8em;">Term</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-              <tbody>
-              <tr>
-              <td id="decentralized-identifier">Decentralized Identifier (DID)</td>
-              <td>Unique ID string and PKI metadata document format for describing the cryptographic keys and other fundamental PKI values linked to a unique, user-controlled, self-sovereign identifier in a DID registry (i.e. blockchain, distributed ledger, etc.).</td>
-              </tr>
-              <tr>
-              <td>DID Configuration</td>
-              <td>Well-Known resource in the format of a JSON object that includes Domain Linkage Assertions</td>
-              </tr>
-              <tr>
-              <td id="domain-linkage-assertion">Domain Linkage Assertion</td>
-              <td>JSON object containing a DID string and cryptographic proof (in the form of a JWT signed with the specified DID's keys) that verifies the domain controller and the DID controller are the same entity.</td>
-              </tr>
-              <tr>
-              <td id="jwt">JWT</td>
-              <td>JSON Web Token, as specified in <a href="https://tools.ietf.org/html/rfc7797">IETF RFC 7797</a></td>
-              </tr>
-          </tbody>
-        </table>
+      <h2>Terminology</h2>
+
+      <section>
+        <h2><dfn data-lt="DID" data-dfn-type="dfn" id="DID">DID</dfn></h2>
+        <p>
+          See the normative definition
+          <a href="https://w3c.github.io/did-core/#identifier" target="_blank"
+            >here</a
+          >, [[did-core]].
+        </p>
+      </section>
+      <section>
+        <h2>
+          <dfn data-lt="DIDDocument" data-dfn-type="dfn" id="DIDDocument"
+            >DID Document</dfn
+          >
+        </h2>
+        <p>
+          See the normative definition
+          <a
+            href="https://w3c.github.io/did-core/#did-documents"
+            target="_blank"
+            >here</a
+          >, [[did-core]].
+        </p>
       </section>
 
-    <section id="resource_location">
-      <h2>Resource Location</h2>
+      <section>
+        <h2>
+          <dfn data-lt="Issuer" data-dfn-type="dfn" id="Issuer">Issuer</dfn>
+        </h2>
+        <p>
+          See the normative definition
+          <a
+            href="https://www.w3.org/TR/vc-data-model/#dfn-issuers"
+            target="_blank"
+            >here</a
+          >, [[vc-data-model]].
+        </p>
+      </section>
+
+      <section>
+        <h2>
+          <dfn data-lt="Subject" data-dfn-type="dfn" id="Subject">Subject</dfn>
+        </h2>
+        <p>
+          See the normative definition
+          <a
+            href="https://www.w3.org/TR/vc-data-model/#dfn-subjects"
+            target="_blank"
+            >here</a
+          >, [[vc-data-model]].
+        </p>
+      </section>
+
+      <section>
+        <h2>
+          <dfn data-lt="Controller" data-dfn-type="dfn" id="Controller"
+            >Controller</dfn
+          >
+        </h2>
+        <p>
+          See the normative definition
+          <a
+            href="https://w3c.github.io/did-core/#dfn-did-controllers"
+            target="_blank"
+            >here</a
+          >, [[vc-data-model]].
+        </p>
+      </section>
+
+      <section>
+        <h2>
+          <dfn data-lt="Verifier" data-dfn-type="dfn" id="Verifier"
+            >Verifier</dfn
+          >
+        </h2>
+        <p>
+          See the normative definition
+          <a
+            href="https://www.w3.org/TR/vc-data-model/#dfn-verifier"
+            target="_blank"
+            >here</a
+          >, [[vc-data-model]].
+        </p>
+      </section>
+
+      <section>
+        <h2>
+          <dfn data-lt="JSONWebToken" data-dfn-type="dfn" id="JSONWebToken"
+            >JSON Web Token</dfn
+          >
+        </h2>
+        <p>
+          See the normative definition
+          <a
+            href="https://www.w3.org/TR/vc-data-model/#json-web-token"
+            target="_blank"
+            >here</a
+          >, [[vc-data-model]].
+        </p>
+      </section>
+
+      <section>
+        <h2>
+          <dfn
+            data-lt="LinkedDataProof"
+            data-dfn-type="dfn"
+            id="LinkedDataProof"
+            >Linked Data Proof</dfn
+          >
+        </h2>
+        <p>
+          See the normative definition
+          <a
+            href="https://www.w3.org/TR/vc-data-model/#linked-data-proofs"
+            target="_blank"
+            >here</a
+          >, [[vc-data-model]].
+        </p>
+      </section>
+
+      <section>
+        <h2>
+          <dfn data-lt="Well-KnownURI" data-dfn-type="dfn" id="Well-KnownURI"
+            >Well-Known URIs</dfn
+          >
+        </h2>
+        <p>
+          See the normative definition here [[RFC5785]].
+        </p>
+        <p>
+          See the IANA registry here:
+          <a
+            href="https://www.iana.org/assignments/well-known-uris/well-known-uris.xhtml"
+            target="_blank"
+            >Well-Known URIs</a
+          >.
+        </p>
+      </section>
+    </section>
+
+    <section>
+      <h2>
+        <dfn
+          data-lt="DIDConfigurationURI"
+          data-dfn-type="dfn"
+          id="DIDConfigurationURI"
+          >DID Configuration URI</dfn
+        >
+      </h2>
+      <p>A well-known URI for a <a>DID Configuration Resource</a></p>
+
+      <pre class="example nohighlight">
+          <a href="https://identity.foundation/.well-known/did-configuration.json" target="_blank">https://identity.foundation/.well-known/did-configuration.json</a>
+        </pre>
       <p>
-        The DID Configuration resource MUST exist at the domain root, in the <a href="https://tools.ietf.org/html/rfc8615">IETF 8615 Well-Known Resource</a> directory, as follows: `/.well-known/did-configuration` 
+        The DID Configuration resource MUST exist at the domain root, in the
+        <a href="https://tools.ietf.org/html/rfc8615"
+          >IETF 8615 Well-Known Resource</a
+        >
+        directory, as follows: `/.well-known/did-configuration.json`
       </p>
     </section>
 
-    <section id="resource_definition">
-      <h2>Resource Definition</h2>
+    <section>
+      <h2>
+        <dfn
+          data-lt="DIDConfigurationResource"
+          data-dfn-type="dfn"
+          id="DIDConfigurationResource"
+          >DID Configuration Resource</dfn
+        >
+      </h2>
       <p>
-        The DID Configuration resource MUST be a valid JSON object containing Domain Linkage Assertions, which contain cryptographically verifiable claims that prove the same entity controls both the included DIDs and the domain the resource is located under. The resource MUST NOT exceed 8 kilobytes in total size; resources that exceed this maximum size are to be ignored by the processing entity.
+        A [[JSON-LD]] object that includes Domain Linkage Credentials located at
+        a <a>DID Configuration URI</a>.
       </p>
 
-      <h3>Example</h3>
+      <ol>
+        <li>
+          Given a domain, `example.com`, fetch the DID Configuration resource
+          via a `GET` request over secure HTTP connection (`https`) to the
+          well-known location:
+          `https://example.com/.well-known/did-configuration.json`.
+        </li>
+        <li>
+          Provided the call returns a successful response, ensure the body is no
+          larger than `8 kilobytes` in size.
+        </li>
+        <li>
+          Parse the body as JSON in accordance with
+          <a href="https://tools.ietf.org/html/rfc8259">IETF RFC 8259</a>.
+        </li>
+      </ol>
 
-<div class="example">
-<code><pre>
+      <p>
+        The DID Configuration resource MUST be a valid JSON object containing
+        Domain Linkage Credentials, which contain cryptographically verifiable
+        claims that prove the same entity controls both the included DIDs and
+        the domain the resource is located under.
+      </p>
+      <p>
+        The resource MUST NOT exceed 8 kilobytes in total size; resources that
+        exceed this maximum size are to be ignored by the processing entity.
+      </p>
+
+      <pre class="example">
 {
+  "@context": "https://identity.foundation/.well-known/contexts/did-configuration-v0.0.jsonld",
   "entries": [
     {
-      "did": "did:btcr:123...",
-      "jwt": "ewogICJAY29udGV4dCI..."
-              ↑ EXAMPLE OF DECODED JWT CLAIMS SET
-              {
-                "iss": "did:btcr:123...",
-                "domain": "example.com",
-                "exp": 1475878357
-              }
+      "@context": [
+        "https://www.w3.org/2018/credentials/v1",
+        "https://identity.foundation/.well-known/contexts/did-configuration-v0.0.jsonld"
+      ],
+      "issuer": "did:web:identity.foundation",
+      "issuanceDate": "2020-04-13T16:44:52-05:00",
+      "expirationDate": "2020-05-13T16:44:52-05:00",
+      "type": ["VerifiableCredential", "DomainLinkageCredential"],
+      "credentialSubject": {
+        "id": "did:web:identity.foundation",
+        "domain": "identity.foundation"
+      },
+      "proof": {
+        "type": "JsonWebSignature2020",
+        "created": "2020-04-13T21:49:40Z",
+        "verificationMethod": "did:web:identity.foundation#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A",
+        "proofPurpose": "assertionMethod",
+        "jws": "eyJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdLCJhbGciOiJFZERTQSJ9..KyuVW9YdrShA3kDMufSWKtKHXtIKTzRpbxPgx1n50S2pl3GwrqtJWtZAexUD6beaTqu4W4njCoAv3_qaCQmuBA"
+      }
     },
-    {
-      "did": "did:ethr:456...",
-      "jwt": "73hf3unAY29udGc3dvH..."
-    },
-    {
-      "did": "did:sov:789...",
-      "jwt": "uC75Xsdcgbd73Cdeqc8..."
-    }
+    "eyJraWQiOiJkaWQ6d2ViOmlkZW50aXR5LmZvdW5kYXRpb24jX1FxMFVMMkZxNjUxUTBGamQ2VHZuWUUtZmFIaU9wUmxQVlFjWV8tdEE0QSIsImFsZyI6IkVkRFNBIn0.eyJzdWIiOiJkaWQ6d2ViOmlkZW50aXR5LmZvdW5kYXRpb24iLCJpc3MiOiJkaWQ6d2ViOmlkZW50aXR5LmZvdW5kYXRpb24iLCJuYmYiOjE1ODY4MTQyOTIsImV4cCI6MTU4OTQwNjI5MiwidmMiOnsiQGNvbnRleHQiOlsiaHR0cHM6Ly93d3cudzMub3JnLzIwMTgvY3JlZGVudGlhbHMvdjEiLCJodHRwczovL2lkZW50aXR5LmZvdW5kYXRpb24vLndlbGwta25vd24vY29udGV4dHMvZGlkLWNvbmZpZ3VyYXRpb24tdjAuMC5qc29ubGQiXSwiaXNzdWVyIjoiZGlkOndlYjppZGVudGl0eS5mb3VuZGF0aW9uIiwiaXNzdWFuY2VEYXRlIjoiMjAyMC0wNC0xM1QxNjo0NDo1Mi0wNTowMCIsImV4cGlyYXRpb25EYXRlIjoiMjAyMC0wNS0xM1QxNjo0NDo1Mi0wNTowMCIsInR5cGUiOlsiVmVyaWZpYWJsZUNyZWRlbnRpYWwiLCJEb21haW5MaW5rYWdlQ3JlZGVudGlhbCJdLCJjcmVkZW50aWFsU3ViamVjdCI6eyJpZCI6ImRpZDp3ZWI6aWRlbnRpdHkuZm91bmRhdGlvbiIsImRvbWFpbiI6ImlkZW50aXR5LmZvdW5kYXRpb24ifX19.qEV-lat1Wc8qKU_OLbTd07fx7tkW12QhkyiB912OsHi4FmkTWr_qMAFyW8IZxaQAsXg1E4yCRe8VsfGYaePfCg"
   ]
-}
-</code></pre>
-</div>
-      
-      <h3>Top-Level Properties</h3>
+}                 
+        </pre
+      >
+
+      <ul>
+        <li><code>@context</code> MUST be present.</li>
+        <li><code>entries</code> MUST be present.</li>
+      </ul>
+
       <p>
-        The following properties are defined for use at the top-level of the resource - all other properties that are not defined below MUST be ignored:
+        The value of <code>entries</code> MUST be an array of
+        <a>DomainLinkageCredential</a>
       </p>
+
+      <p>
+        Additional members MUST NOT be present in the
+        <a>DID Configuration Resource</a>.
+      </p>
+    </section>
+
+    <section>
+      <h2>
+        <dfn
+          data-lt="DomainLinkageCredential"
+          data-dfn-type="dfn"
+          id="DomainLinkageCredential"
+          >Domain Linkage Credential</dfn
+        >
+      </h2>
+      <p>
+        A Verifiable Credential represenrted as JSON-LD or JSON Web Token.
+      </p>
+
+      <p>
+        In order to eliminate ambiguity between
+        <a
+          href="https://www.w3.org/TR/vc-data-model/#proof-formats"
+          target="_blank"
+          >proof-formats</a
+        >, the following requirements must be observed.
+      </p>
+
+      <ul>
+        <li><code>id</code> MUST NOT be present.</li>
+        <li><code>issuanceDate</code> MUST be present.</li>
+        <li><code>expirationDate</code> MUST be present.</li>
+      </ul>
+
       <ul>
         <li>
-          `entries` - The resource MUST contain this property, and its value MUST be an array of Domain Linkage Assertion objects.
+          <code>credentialSubject.id</code> MUST be present, and MUST be a
+          <a>DID</a>.
+        </li>
+        <li>
+          <code>credentialSubject.domain</code> MUST be present, and MUST be a
+          <a>Domain</a>.
         </li>
       </ul>
 
-      <h3>Domain Linkage Assertions</h3>
-      <p>
-        The following properties are defined for Domain Linkage Assertion objects - all other properties that are not defined below MUST be ignored:
-      </p>
+      <section>
+        <h3>
+          <dfn
+            data-lt="LDDomainLinkageCredential"
+            data-dfn-type="dfn"
+            id="LDProofDomainLinkageCredential"
+            >Linked Data Proof Format</dfn
+          >
+        </h3>
 
-      <ul>
+        <pre class="example" title="Linked Data Domain Linkage Credential">
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://identity.foundation/.well-known/contexts/did-configuration-v0.0.jsonld"
+  ],
+  "issuer": "did:web:identity.foundation",
+  "issuanceDate": "2020-04-13T16:44:52-05:00",
+  "expirationDate": "2020-05-13T16:44:52-05:00",
+  "type": ["VerifiableCredential", "DomainLinkageCredential"],
+  "credentialSubject": {
+    "id": "did:web:identity.foundation",
+    "domain": "identity.foundation"
+  },
+  "proof": {
+    "type": "JsonWebSignature2020",
+    "created": "2020-04-13T21:49:40Z",
+    "verificationMethod": "did:web:identity.foundation#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A",
+    "proofPurpose": "assertionMethod",
+    "jws": "eyJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdLCJhbGciOiJFZERTQSJ9..KyuVW9YdrShA3kDMufSWKtKHXtIKTzRpbxPgx1n50S2pl3GwrqtJWtZAexUD6beaTqu4W4njCoAv3_qaCQmuBA"
+  }
+}
+        </pre>
+      </section>
+
+      <section>
+        <h3>
+          <dfn
+            data-lt="JWTDomainLinkageCredential"
+            data-dfn-type="dfn"
+            id="JWTDomainLinkageCredential"
+            >JSON Web Token Proof Format</dfn
+          >
+        </h3>
+
+        <pre class="example" title="Compact JWT Domain Linkage Credential">
+          eyJraWQiOiJkaWQ6d2ViOmlkZW50aXR5LmZvdW5kYXRpb24jX1FxMFVMMkZxNjUxUTBGamQ2VHZuWUUtZmFIaU9wUmxQVlFjWV8tdEE0QSIsImFsZyI6IkVkRFNBIn0.eyJzdWIiOiJkaWQ6d2ViOmlkZW50aXR5LmZvdW5kYXRpb24iLCJpc3MiOiJkaWQ6d2ViOmlkZW50aXR5LmZvdW5kYXRpb24iLCJuYmYiOjE1ODY4MTQyOTIsImV4cCI6MTU4OTQwNjI5MiwidmMiOnsiQGNvbnRleHQiOlsiaHR0cHM6Ly93d3cudzMub3JnLzIwMTgvY3JlZGVudGlhbHMvdjEiLCJodHRwczovL2lkZW50aXR5LmZvdW5kYXRpb24vLndlbGwta25vd24vY29udGV4dHMvZGlkLWNvbmZpZ3VyYXRpb24tdjAuMC5qc29ubGQiXSwiaXNzdWVyIjoiZGlkOndlYjppZGVudGl0eS5mb3VuZGF0aW9uIiwiaXNzdWFuY2VEYXRlIjoiMjAyMC0wNC0xM1QxNjo0NDo1Mi0wNTowMCIsImV4cGlyYXRpb25EYXRlIjoiMjAyMC0wNS0xM1QxNjo0NDo1Mi0wNTowMCIsInR5cGUiOlsiVmVyaWZpYWJsZUNyZWRlbnRpYWwiLCJEb21haW5MaW5rYWdlQ3JlZGVudGlhbCJdLCJjcmVkZW50aWFsU3ViamVjdCI6eyJpZCI6ImRpZDp3ZWI6aWRlbnRpdHkuZm91bmRhdGlvbiIsImRvbWFpbiI6ImlkZW50aXR5LmZvdW5kYXRpb24ifX19.qEV-lat1Wc8qKU_OLbTd07fx7tkW12QhkyiB912OsHi4FmkTWr_qMAFyW8IZxaQAsXg1E4yCRe8VsfGYaePfCg 
+        </pre>
+        <p>
+          Example of the decoded JWT Header
+        </p>
+        <pre class="example" title="JWT Header">
+          {
+            "kid": "did:web:identity.foundation#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A",
+            "alg": "EdDSA"
+          }
+        </pre>
+
+        <ul>
+          <li><code>typ</code> MUST NOT be present in the JWT Header.</li>
+          <li><code>kid</code> MUST be present in the JWT Header.</li>
+          <li><code>alg</code> MUST be present in the JWT Header.</li>
+        </ul>
+        <p>Additional members MUST NOT be present in the header.</p>
+
+        <pre class="example" title="JWT Payload">
+          {
+            "sub": "did:web:identity.foundation",
+            "iss": "did:web:identity.foundation",
+            "nbf": 1586814292,
+            "exp": 1589406292,
+            "vc": {
+              "@context": [
+                "https://www.w3.org/2018/credentials/v1",
+                "https://identity.foundation/.well-known/contexts/did-configuration-v0.0.jsonld"
+              ],
+              "issuer": "did:web:identity.foundation",
+              "issuanceDate": "2020-04-13T16:44:52-05:00",
+              "expirationDate": "2020-05-13T16:44:52-05:00",
+              "type": [
+                "VerifiableCredential",
+                "DomainLinkageCredential"
+              ],
+              "credentialSubject": {
+                "id": "did:web:identity.foundation",
+                "domain": "identity.foundation"
+              }
+            }
+          }
+        </pre>
+
+        <ul>
           <li>
-            `did` - MUST be present, and the DID string MUST match the DID string specified in the `iss` property of the assertion's decoded `jwt` Claims Set.
+            <code>iss</code> MUST be equal to <code>credentialSubject.id</code>.
           </li>
-
           <li>
-            `jwt` - MUST be present, and MUST be a JWT signed by the keys currently associated with the specified DID. The JWT assertion defines the following claims:
-            <ul>
-              <li>
-                `iss` - MUST be present, and MUST be a DID string that matches the DID string asserted in the DID Entry Object.
-              </li>
-              <li>
-                `domain` - MUST be present, and MUST match the domain the DID Configuration resource is located at.
-              </li>
-              <li>
-                `exp` - SHOULD be defined to indicate a time after which the assertion of domain linkage MUST NOT be deemed valid.
-              </li>
-            </ul>
+            <code>sub</code> MUST be equal to <code>credentialSubject.id</code>.
+          </li>
+          <li>
+            <code>vc</code> MUST be equal to the LD Proof Format without the
+            <code>proof</code> property.
           </li>
         </ul>
+        <p>Additional members MUST NOT be present in the payload.</p>
+      </section>
     </section>
 
-    <section id="resource_validation">
-      <h2>Resource Fetch and Validation</h2>
+    <section>
+      <h2>
+        <dfn
+          data-lt="DIDConfigurationResourceVerification"
+          data-dfn-type="dfn"
+          id="DIDConfigurationResourceVerification"
+          >DID Configuration Resource Verification</dfn
+        >
+      </h2>
+      <p>
+        After fetching and validating the resource via the
+        <a href="#DIDConfigurationResource">DID Configuration Resource</a>
+        process. The processing entity MAY choose to validate any of Domain
+        Linkage Credentials it contains. Domain Linkage Credentials are
+        independent from one another, thus one being valid or invalid does not
+        affect the state of the others. For a Domain Linkage Credential to be
+        deemed valid, it MUST be successfully processed in accordance with the
+        following steps:
+      </p>
+
       <ol>
         <li>
-          Given a domain, `example.com`, fetch the DID Configuration resource via a `GET` request over secure HTTP connection (`https`) to the well-known location: `https://example.com/.well-known/did-configuration`.
+          The <code>credentialSubject.id</code> MUST be a <a>DID</a>, and the
+          value MUST be equal to both the <a>Subject</a> and <a>Issuer</a> of
+          the <a>Domain Linkage Credential</a>.
         </li>
         <li>
-          Provided the call returns a successful response, ensure the body is no larger than `8 kilobytes` in size.
+          The <a>Domain Linkage Credential</a> must be in either a
+          <a>Linked Data Proof Format</a> or
+          <a>JSON Web Token Proof Format</a>
         </li>
         <li>
-          Parse the body as JSON in accordance with <a href="https://tools.ietf.org/html/rfc8259">IETF RFC 8259</a>.
+          The <code>credentialSubject.domain</code> property MUST be present,
+          and its value MUST match the host portion of the URL the resource was
+          requested from.
+        </li>
+
+        <li>
+          The implementer MUST perform
+          <a href="https://w3c-ccg.github.io/did-resolution/">DID resolution</a>
+          on the DID specified in the <a>Issuer</a> of the
+          <a>Domain Linkage Credential</a> to obtain the associated DID
+          document.
+        </li>
+        <li>
+          Using the retrieved DID document, the implementer MUST validate the
+          signature of the <a>Domain Linkage Credential</a> against key material
+          referenced in the
+          <a href="https://w3c.github.io/did-spec/#assertionMethod"
+            >assertionMethod section</a
+          >
+          of the DID document.
+        </li>
+
+        <li>
+          If <a>Domain Linkage Credential</a> verification is successfull, a
+          <a>Verifier</a> SHOULD consider the entitry controlling the
+          <a>Domain</a>and the <a>Controller</a> of the <a>DID</a> to be the
+          same entity.
         </li>
       </ol>
-    </section>
 
-    <section>
-        <h2>Validation of Domain Linkage Assertions</h2>
-        <p>
-          After fetching and validating the resource via the <a href="#resource_validation">Resource Fetch and Validation</a> process enumerated above, the processing entity MAY choose to validate any of Domain Linkage Assertions it contains. Domain Linkage Assertions are independent from one another, thus one being valid or invalid does not affect the state of the others. For a Domain Linkage Assertion to be deemed valid, it MUST be successfully processed in accordance with the following steps:
-        </p>
-        <ol>
-          <li>
-            The assertion object MUST contain the property `did`, and the value MUST be a valid <a href="https://w3c-ccg.github.io/did-spec/#generic-did-syntax">DID</a>.
-          </li>
-          <li>
-            The assertion object MUST contain the property `jwt`, and the value MUST be a <a href="https://www.rfc-editor.org/rfc/rfc7515#section-3.1">JWS Compact Serialization</a> form of a JWT.
-          </li>
-          <li>
-            The JWT object MUST contain the `iss` property, and its value MUST match the DID present in the assertion's outer `did` property value (as noted in step 1 above).
-          </li>
-          <li>
-            The JWT object MUST contain the `domain` property, and its value MUST match the host portion of the URL the resource was requested from.
-          </li>
-          <li>
-            The JWT object SHOULD contain the `exp` property, and if present, the value MUST be an epoch time that is greater than the current epoch time. If this property is not present, the assertion's future expiry is based on its continued presence in the resource (or its replacement with updated assertion that contains an expiry value).
-          </li>
-          <li>
-            Once all properties in the JWT have been parsed in accordance with the preceding rules, the implementer MUST perform <a href="https://w3c-ccg.github.io/did-resolution/">DID resolution</a> on the DID specified in the `iss` property to obtain the associated DID document.
-          </li>
-          <li>
-            Using the retrieved DID document, the implementer MUST validate the signature of the JWT against key material referenced in the <a href="https://w3c.github.io/did-spec/#authentication">authentication section</a> of the DID document.
-          </li>
-        </ol>
-
-        <p>
-          In the case an entry fails validation against any of the criteria enumerated above, the single entry that failed will be deemed invalid, and the validation implementation MUST produce an error to that effect. If an entry fails validation during an iteration of the entries by the processing entity, there is no normative implication about the validity of other entries, and the choice to continue iteration and validation of further entries is at the election of the processing entity.
-        </p>
-
-    </section>
-
-    <section>
-      <h2>Processing Order of Domain Linkage Assertion Entries</h2>
       <p>
-        If the resource processing entity is not looking for the presence of a specific DID, or intending to validate a specific DID in the `entries` array of Domain Linkage Assertions, the resource processing entity SHOULD iterate the array of Domain Linkage Assertions beginning at 0 index. This normative iteration from 0 index is intended to allow domain controllers to order their Domain Linkage Assertions in accordance with a known processing order, in cases where order may matter to the domain controller. An example of this is the case where a domain controller has a primary signing DID that is the likely target of interest for the vast majority of relying parties who seek to validate an assertion based on the DIDs associated with a domain.
+        If an entry fails validation during an iteration of the entries by the
+        processing entity, there is no normative implication about the validity
+        of other entries, and the choice to continue iteration and validation of
+        further entries is at the election of the processing entity.
+      </p>
+
+      <p>
+        If the resource processing entity is not looking for the presence of a
+        specific DID, or intending to validate a specific DID in the `entries`
+        array of Domain Linkage Credentials, the resource processing entity
+        SHOULD iterate the array of Domain Linkage Credentials beginning at 0
+        index. This normative iteration from 0 index is intended to allow domain
+        controllers to order their Domain Linkage Credentials in accordance with
+        a known processing order, in cases where order may matter to the domain
+        controller. An example of this is the case where a domain controller has
+        a primary signing DID that is the likely target of interest for the vast
+        majority of relying parties who seek to validate an assertion based on
+        the DIDs associated with a domain.
       </p>
     </section>
 
-  </body>
+    <section id="conformance">
+      <p>
+        This document contains examples that contain JSON and JSON-LD content.
+        Some of these examples contain characters that are invalid, such as
+        inline comments (<code>//</code>) and the use of ellipsis
+        (<code>...</code>) to denote information that adds little value to the
+        example. Implementers are cautioned to remove this content if they
+        desire to use the information as valid JSON, or JSON-LD.
+      </p>
 
+      <p>
+        A <a>DID Configuration URI</a> is any concrete expression of the rules
+        specified in Section <a>DID Configuration URI</a> and MUST comply with
+        relevant normative statements in that section.
+      </p>
+
+      <p>
+        A <a>DID Configuration Resource</a> is any concrete expression of the
+        rules specified in Section <a>DID Configuration Resource</a> and MUST
+        comply with relevant normative statements in that section.
+      </p>
+
+      <p>
+        A <a>Domain Linkage Credential</a> is any concrete expression of the
+        rules specified in Section <a>Domain Linkage Credential</a> and MUST
+        comply with relevant normative statements in that section.
+      </p>
+
+      <p>
+        Implementations MUST comply with relevant normative statements in
+        <a>DID Configuration Resource Verification</a>
+      </p>
+    </section>
+  </body>
 </html>
