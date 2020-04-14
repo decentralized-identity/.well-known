@@ -1,4 +1,6 @@
 import React from "react";
+import GithubCorner from "react-github-corner";
+
 import vc from "vc-js";
 
 const jsonld = require("jsonld");
@@ -87,56 +89,63 @@ function App() {
     );
     console.log({ did_configuration_resource });
     for (let i = 0; i < did_configuration_resource.entries.length; i++) {
-      console.log("processing entry ", i);
-      let entry = did_configuration_resource.entries[i];
-      console.log({ entry });
-      if (typeof entry === "string") {
-        const { header, payload, signature } = await ES256K.JWS.decode(entry, {
-          complete: true,
-        });
-        console.log({ header, payload, signature });
-        const { document } = await documentLoader(header.kid);
-        console.log(document);
-        const key = getPublicKey(document, header.kid);
-        console.log({ key });
-        if (key && key.publicKeyJwk.crv === "secp256k1") {
-          const verified = await ES256K.JWT.verify(entry, key.publicKeyJwk);
+      try {
+        console.log("processing entry ", i);
+        let entry = did_configuration_resource.entries[i];
+        console.log({ entry });
+        if (typeof entry === "string") {
+          const { header, payload, signature } = await ES256K.JWS.decode(
+            entry,
+            {
+              complete: true,
+            }
+          );
+          console.log({ header, payload, signature });
+          const { document } = await documentLoader(header.kid);
+          console.log(document);
+          const key = getPublicKey(document, header.kid);
+          console.log({ key });
+          if (key && key.publicKeyJwk.crv === "secp256k1") {
+            const verified = await ES256K.JWT.verify(entry, key.publicKeyJwk);
 
-          const domain_matches_resource_uri =
-            verified.vc.credentialSubject.domain ===
-            new URL(well_known_did_configuration_uri).host;
+            const domain_matches_resource_uri =
+              verified.vc.credentialSubject.domain ===
+              new URL(well_known_did_configuration_uri).host;
 
-          if (domain_matches_resource_uri) {
-            linked_dids.push(verified.vc.credentialSubject.id);
+            if (domain_matches_resource_uri) {
+              linked_dids.push(verified.vc.credentialSubject.id);
+            }
           }
         }
-      }
-      if (typeof entry === "object") {
-        const suite = suites[entry.proof.type];
-        if (!suite) {
-          console.warn("no suite for ", entry.proof.type);
-          continue;
+        if (typeof entry === "object") {
+          const suite = suites[entry.proof.type];
+          if (!suite) {
+            console.warn("no suite for ", entry.proof.type);
+            continue;
+          }
+          const verification_result = await vc.verifyCredential({
+            credential: entry,
+            suite,
+            documentLoader,
+          });
+          if (!verification_result.verified) {
+            continue;
+          }
+          console.log({ verification_result });
+          const domain_matches_resource_uri =
+            entry.credentialSubject.domain ===
+            new URL(well_known_did_configuration_uri).host;
+          console.log({ domain_matches_resource_uri });
+          if (domain_matches_resource_uri) {
+            linked_dids.push(entry.credentialSubject.id);
+          }
         }
-        const verification_result = await vc.verifyCredential({
-          credential: entry,
-          suite,
-          documentLoader,
-        });
-        if (!verification_result.verified) {
-          continue;
-        }
-        console.log({ verification_result });
-        const domain_matches_resource_uri =
-          entry.credentialSubject.domain ===
-          new URL(well_known_did_configuration_uri).host;
-        console.log({ domain_matches_resource_uri });
-        if (domain_matches_resource_uri) {
-          linked_dids.push(entry.credentialSubject.id);
-        }
+      } catch (e) {
+        console.error(e);
       }
     }
 
-    return [];
+    return linked_dids;
   };
 
   React.useEffect(() => {
@@ -152,6 +161,10 @@ function App() {
   }, []);
   return (
     <div style={{ padding: "16px" }}>
+      <GithubCorner
+        bannerColor={"#594aa8"}
+        href="https://github.com/decentralized-identity/.well-known"
+      />
       <pre>{JSON.stringify(state, null, 2)}</pre>
     </div>
   );

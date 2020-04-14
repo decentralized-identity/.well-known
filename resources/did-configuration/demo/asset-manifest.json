@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/.well-known/resources/did-configuration/demo/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/.well-known/resources/did-configuration/demo/static/js/main.811d655a.chunk.js",
-    "main.js.map": "/.well-known/resources/did-configuration/demo/static/js/main.811d655a.chunk.js.map",
+    "main.js": "/.well-known/resources/did-configuration/demo/static/js/main.d7beeafc.chunk.js",
+    "main.js.map": "/.well-known/resources/did-configuration/demo/static/js/main.d7beeafc.chunk.js.map",
     "runtime-main.js": "/.well-known/resources/did-configuration/demo/static/js/runtime-main.4eeb6761.js",
     "runtime-main.js.map": "/.well-known/resources/did-configuration/demo/static/js/runtime-main.4eeb6761.js.map",
-    "static/js/2.f1fbe4d4.chunk.js": "/.well-known/resources/did-configuration/demo/static/js/2.f1fbe4d4.chunk.js",
-    "static/js/2.f1fbe4d4.chunk.js.map": "/.well-known/resources/did-configuration/demo/static/js/2.f1fbe4d4.chunk.js.map",
+    "static/js/2.d375ccd2.chunk.js": "/.well-known/resources/did-configuration/demo/static/js/2.d375ccd2.chunk.js",
+    "static/js/2.d375ccd2.chunk.js.map": "/.well-known/resources/did-configuration/demo/static/js/2.d375ccd2.chunk.js.map",
     "index.html": "/.well-known/resources/did-configuration/demo/index.html",
-    "precache-manifest.a176c0a7b9c560f2eea17def3b014c05.js": "/.well-known/resources/did-configuration/demo/precache-manifest.a176c0a7b9c560f2eea17def3b014c05.js",
+    "precache-manifest.ad8485b584025d68429268dfbcd3b1e4.js": "/.well-known/resources/did-configuration/demo/precache-manifest.ad8485b584025d68429268dfbcd3b1e4.js",
     "service-worker.js": "/.well-known/resources/did-configuration/demo/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/.well-known/resources/did-configuration/demo/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.f1fbe4d4.chunk.js.LICENSE.txt": "/.well-known/resources/did-configuration/demo/static/js/2.f1fbe4d4.chunk.js.LICENSE.txt"
+    "static/js/2.d375ccd2.chunk.js.LICENSE.txt": "/.well-known/resources/did-configuration/demo/static/js/2.d375ccd2.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.4eeb6761.js",
-    "static/js/2.f1fbe4d4.chunk.js",
+    "static/js/2.d375ccd2.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.811d655a.chunk.js"
+    "static/js/main.d7beeafc.chunk.js"
   ]
 }

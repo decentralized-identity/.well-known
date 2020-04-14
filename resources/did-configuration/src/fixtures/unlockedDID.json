@@ -1,5 +1,8 @@
 {
-  "@context": ["https://www.w3.org/ns/did/v1"],
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://w3c-ccg.github.io/lds-jws2020/contexts/lds-jws2020-v0.0.jsonld"
+  ],
   "id": "did:web:identity.foundation",
   "publicKey": [
     {
