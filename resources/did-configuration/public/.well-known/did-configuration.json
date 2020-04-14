@@ -11,7 +11,10 @@
       "issuer": "did:key:z6MkjRagNiMu91DduvCvgEsqLZDVzrJzFrwahc4tXLt9DoHd",
       "issuanceDate": "2020-04-13T16:44:52-05:00",
       "expirationDate": "2020-05-13T16:44:52-05:00",
-      "type": ["VerifiableCredential", "DomainLinkageCredential"],
+      "type": [
+        "VerifiableCredential",
+        "DomainLinkageCredential"
+      ],
       "credentialSubject": {
         "id": "did:key:z6MkjRagNiMu91DduvCvgEsqLZDVzrJzFrwahc4tXLt9DoHd",
         "domain": "identity.foundation"
@@ -32,7 +35,10 @@
       "issuer": "did:web:vc.transmute.world",
       "issuanceDate": "2020-04-13T16:44:52-05:00",
       "expirationDate": "2020-05-13T16:44:52-05:00",
-      "type": ["VerifiableCredential", "DomainLinkageCredential"],
+      "type": [
+        "VerifiableCredential",
+        "DomainLinkageCredential"
+      ],
       "credentialSubject": {
         "id": "did:web:vc.transmute.world",
         "domain": "identity.foundation"

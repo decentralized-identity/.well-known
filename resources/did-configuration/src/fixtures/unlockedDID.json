@@ -11,12 +11,20 @@
         "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ",
         "kty": "OKP",
         "kid": "did:web:identity.foundation#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A"
+      },
+      "privateKeyJwk": {
+        "crv": "Ed25519",
+        "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ",
+        "d": "tP7VWE16yMQWUO2G250yvoevfbfxY25GjHglTP3ZOyU",
+        "kty": "OKP",
+        "kid": "did:web:identity.foundation#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A"
       }
     },
     {
       "id": "did:web:identity.foundation#z6Mktts3kfFWDrURs7fNpayz24LZeCGNvCaFMC6KkbeYpZvi",
       "controller": "did:web:identity.foundation",
       "type": "Ed25519VerificationKey2018",
+      "privateKeyBase58": "2fu69stzifU5bMzujkLvK1zLLtmYkW9gvpxMSxGvU4GkXm2KM2HS8nn4Uh5ScxnNDjq46Ru2cEKx4Mv9vHjdqKA2",
       "publicKeyBase58": "FSc1AR14tJyxkcpg9229AxnZpczXWKKtfBBPvKgXuM9L"
     }
   ]
