@@ -165,6 +165,7 @@ function App() {
         bannerColor={"#594aa8"}
         href="https://github.com/decentralized-identity/.well-known"
       />
+      <p>See Developer console for processing details.</p>
       <pre>{JSON.stringify(state, null, 2)}</pre>
     </div>
   );
