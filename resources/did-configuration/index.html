@@ -71,20 +71,20 @@
         (DIDs) is an important undertaking that can aid in bootstrapping
         adoption and usefulness of DIDs. One such form of connection is the
         ability of a DID controller to prove they are the same entity that
-        controls an Internet domain.
+        controls a domain origin.
       </p>
       <p>
         The DID Configuration resource provides proof of a bi-directional
-        relationship between the controller of an Internet domain and a DID via
+        relationship between the controller of a domain origin and a DID via
         cryptographically verifiable signatures that are linked to a DID's key
         material. This document describes the data format of the resource and
-        the resource location at which Internet domain controllers can publish
+        the resource location at which domain origin controllers can publish
         their DID Configuration.
       </p>
       <p>
         Due to the location of the DID Configuration resource, discovery of
-        associated Decentralized Identifiers against a domain is trivial.
-        However, the inverse (i.e given a DID discover the associated domains)
+        associated Decentralized Identifiers against a domain origin is trivial.
+        However, the inverse (i.e given a DID discover the associated domain origins)
         is deemed out of scope.
       </p>
     </section>
@@ -245,6 +245,20 @@
           >.
         </p>
       </section>
+
+      <section>
+        <h2>
+          <dfn data-lt="DomainOrigin" data-dfn-type="dfn" id="DomainOrigin"
+            >Domain Origins</dfn
+          >
+        </h2>
+        <p>
+          For the standard defintion of a domain-based origin in the web security context, 
+          see the WHATWG HTML Living Standard's <a href="https://html.spec.whatwg.org/multipage/origin.html#origin">origin definition</a> section.
+
+          For more information on origins and their composition, you may view the MDN page on <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy">Same-Origin Policy</a>.
+        </p>
+      </section>
     </section>
 
     <section>
@@ -262,7 +276,7 @@
           <a href="https://identity.foundation/.well-known/did-configuration.json" target="_blank">https://identity.foundation/.well-known/did-configuration.json</a>
         </pre>
       <p>
-        The DID Configuration resource MUST exist at the domain root, in the
+        The DID Configuration resource MUST exist at the domain origin's root, in the
         <a href="https://tools.ietf.org/html/rfc8615"
           >IETF 8615 Well-Known Resource</a
         >
@@ -286,7 +300,7 @@
 
       <ol>
         <li>
-          Given a domain, `example.com`, fetch the DID Configuration resource
+          Given a domain origin, `example.com`, fetch the DID Configuration resource
           via a `GET` request over secure HTTP connection (`https`) to the
           well-known location:
           `https://example.com/.well-known/did-configuration.json`.
@@ -305,7 +319,7 @@
         The DID Configuration resource MUST be a valid JSON object containing
         Domain Linkage Credentials, which contain cryptographically verifiable
         claims that prove the same entity controls both the included DIDs and
-        the domain the resource is located under.
+        the domain origin the resource is located under.
       </p>
       <p>
         The resource MUST NOT exceed 8 kilobytes in total size; resources that
@@ -327,7 +341,7 @@
       "type": ["VerifiableCredential", "DomainLinkageCredential"],
       "credentialSubject": {
         "id": "did:web:identity.foundation",
-        "domain": "identity.foundation"
+        "origin": "identity.foundation"
       },
       "proof": {
         "type": "JsonWebSignature2020",
@@ -340,8 +354,7 @@
     "eyJraWQiOiJkaWQ6d2ViOmlkZW50aXR5LmZvdW5kYXRpb24jX1FxMFVMMkZxNjUxUTBGamQ2VHZuWUUtZmFIaU9wUmxQVlFjWV8tdEE0QSIsImFsZyI6IkVkRFNBIn0.eyJzdWIiOiJkaWQ6d2ViOmlkZW50aXR5LmZvdW5kYXRpb24iLCJpc3MiOiJkaWQ6d2ViOmlkZW50aXR5LmZvdW5kYXRpb24iLCJuYmYiOjE1ODY4MTQyOTIsImV4cCI6MTU4OTQwNjI5MiwidmMiOnsiQGNvbnRleHQiOlsiaHR0cHM6Ly93d3cudzMub3JnLzIwMTgvY3JlZGVudGlhbHMvdjEiLCJodHRwczovL2lkZW50aXR5LmZvdW5kYXRpb24vLndlbGwta25vd24vY29udGV4dHMvZGlkLWNvbmZpZ3VyYXRpb24tdjAuMC5qc29ubGQiXSwiaXNzdWVyIjoiZGlkOndlYjppZGVudGl0eS5mb3VuZGF0aW9uIiwiaXNzdWFuY2VEYXRlIjoiMjAyMC0wNC0xM1QxNjo0NDo1Mi0wNTowMCIsImV4cGlyYXRpb25EYXRlIjoiMjAyMC0wNS0xM1QxNjo0NDo1Mi0wNTowMCIsInR5cGUiOlsiVmVyaWZpYWJsZUNyZWRlbnRpYWwiLCJEb21haW5MaW5rYWdlQ3JlZGVudGlhbCJdLCJjcmVkZW50aWFsU3ViamVjdCI6eyJpZCI6ImRpZDp3ZWI6aWRlbnRpdHkuZm91bmRhdGlvbiIsImRvbWFpbiI6ImlkZW50aXR5LmZvdW5kYXRpb24ifX19.qEV-lat1Wc8qKU_OLbTd07fx7tkW12QhkyiB912OsHi4FmkTWr_qMAFyW8IZxaQAsXg1E4yCRe8VsfGYaePfCg"
   ]
 }                 
-        </pre
-      >
+        </pre>
 
       <ul>
         <li><code>@context</code> MUST be present.</li>
@@ -393,8 +406,8 @@
           <a>DID</a>.
         </li>
         <li>
-          <code>credentialSubject.domain</code> MUST be present, and MUST be a
-          <a>Domain</a>.
+          <code>credentialSubject.origin</code> MUST be present, and MUST be a domain
+          <a>Origin</a>.
         </li>
       </ul>
 
@@ -420,7 +433,7 @@
   "type": ["VerifiableCredential", "DomainLinkageCredential"],
   "credentialSubject": {
     "id": "did:web:identity.foundation",
-    "domain": "identity.foundation"
+    "origin": "identity.foundation"
   },
   "proof": {
     "type": "JsonWebSignature2020",
@@ -483,7 +496,7 @@
               ],
               "credentialSubject": {
                 "id": "did:web:identity.foundation",
-                "domain": "identity.foundation"
+                "origin": "identity.foundation"
               }
             }
           }
@@ -537,9 +550,8 @@
           <a>JSON Web Token Proof Format</a>
         </li>
         <li>
-          The <code>credentialSubject.domain</code> property MUST be present,
-          and its value MUST match the host portion of the URL the resource was
-          requested from.
+          The <code>credentialSubject.origin</code> property MUST be present,
+          and its value MUST match the domain origin the resource was requested from.
         </li>
 
         <li>
@@ -562,7 +574,7 @@
         <li>
           If <a>Domain Linkage Credential</a> verification is successfull, a
           <a>Verifier</a> SHOULD consider the entitry controlling the
-          <a>Domain</a>and the <a>Controller</a> of the <a>DID</a> to be the
+          <a>domain origin</a>and the <a>Controller</a> of the <a>DID</a> to be the
           same entity.
         </li>
       </ol>
@@ -579,14 +591,65 @@
         specific DID, or intending to validate a specific DID in the `entries`
         array of Domain Linkage Credentials, the resource processing entity
         SHOULD iterate the array of Domain Linkage Credentials beginning at 0
-        index. This normative iteration from 0 index is intended to allow domain
+        index. This normative iteration from 0 index is intended to allow domain origin
         controllers to order their Domain Linkage Credentials in accordance with
-        a known processing order, in cases where order may matter to the domain
-        controller. An example of this is the case where a domain controller has
+        a known processing order, in cases where order may matter to the domain origin
+        controller. An example of this is the case where a domain origin controller has
         a primary signing DID that is the likely target of interest for the vast
         majority of relying parties who seek to validate an assertion based on
-        the DIDs associated with a domain.
+        the DIDs associated with a domain origin.
       </p>
+    </section>
+
+    <section>
+      <h2>
+        <dfn
+          data-lt="DIDLinkedDomainServiceEndpoint"
+          data-dfn-type="dfn"
+          id="DIDLinkedDomainServiceEndpoint"
+          >Linked Domain Service Endpoint</dfn
+        >
+      </h2>
+      <p>
+        To enable discovery of linked domains from the resolution of a DID, 
+        there must exist a DID Document mechanism for expressing domain origins 
+        where DID Configurations MAY be located that prove a bidirectional linkage
+        between the DID and the domain origins it claims to possess control over.
+        To that end, the following section codifies the `LinkedDomains` [Service Endpoint](https://w3c.github.io/did-core/#service-endpoints), 
+        which allows a DID controller to specify a list of domain origins over which 
+        they assert control. Domain origins asserted within the `LinkedDomains` 
+        endpoint descriptor can then be subsequently crawled by verifying parties 
+        to locate and verify any DID Configuration resources that may exist.
+      </p>
+
+      <pre class="example">
+{
+  "@context": "https://www.w3.org/ns/did/v1",
+  "id": "did:example:123456789abcdefghi",
+  "authentication": [{
+    
+    "id": "did:example:123456789abcdefghi#keys-1",
+    "type": "RsaVerificationKey2018",
+    "controller": "did:example:123456789abcdefghi",
+    "publicKeyPem": "-----BEGIN PUBLIC KEY...END PUBLIC KEY-----\r\n"
+  }],
+  "service": [{
+    "id":"did:example:123456789abcdefghi#vcs",
+    "type": "LinkedDomains",
+    "origins": ["foo.example.com", "identity.foundation"]
+  }]
+}                 
+      </pre>
+      
+      <p>
+        `LinkedDomains` endpoint descriptors are JSON objects composed as follows:
+        <ul>
+          <li>The object MUST contain an `id` property, and its value MUST be a valid DID URL reference.</li>
+          <li>The object MUST contain a `type` property, and its value MUST be the string `"LinkedDomains"`.</li>
+          <li>The object MUST contain an `origins` property, and its value MUST be an array of one or more [domain origins](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy).</li>
+        </ul>
+      </p>
+
     </section>
 
     <section id="conformance">
