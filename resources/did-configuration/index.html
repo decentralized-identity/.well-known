@@ -615,7 +615,8 @@
         there must exist a DID Document mechanism for expressing domain origins 
         where DID Configurations MAY be located that prove a bidirectional linkage
         between the DID and the domain origins it claims to possess control over.
-        To that end, the following section codifies the `LinkedDomains` [Service Endpoint](https://w3c.github.io/did-core/#service-endpoints), 
+        To that end, the following section codifies the `LinkedDomains` 
+        <a href="https://w3c.github.io/did-core/#service-endpoints">Service Endpoint</a>, 
         which allows a DID controller to specify a list of domain origins over which 
         they assert control. Domain origins asserted within the `LinkedDomains` 
         endpoint descriptor can then be subsequently crawled by verifying parties 
@@ -646,7 +647,8 @@
         <ul>
           <li>The object MUST contain an `id` property, and its value MUST be a valid DID URL reference.</li>
           <li>The object MUST contain a `type` property, and its value MUST be the string `"LinkedDomains"`.</li>
-          <li>The object MUST contain an `origins` property, and its value MUST be an array of one or more [domain origins](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy).</li>
+          <li>The object MUST contain an `origins` property, and its value MUST be an array of one or more 
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy">domain origins</a>.</li>
         </ul>
       </p>
 
