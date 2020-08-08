@@ -8,9 +8,9 @@
 
 A claim object with fields for domain linkage assertions.
 
-<h4 id="domain"><a href="#domain">domain</a></h4>
+<h4 id="origin"><a href="#origin">domain</a></h4>
 
-The domain being claimed to be linked to the DID in the domainLinkageAssertion.
+The origin being claimed to be linked to the DID in the domainLinkageAssertion.
 
 <h4 id="entries"><a href="#entries">entries</a></h4>
 

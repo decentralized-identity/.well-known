@@ -109,7 +109,7 @@ function App() {
             const verified = await ES256K.JWT.verify(entry, key.publicKeyJwk);
 
             const domain_matches_resource_uri =
-              verified.vc.credentialSubject.domain ===
+              verified.vc.credentialSubject.origin ===
               new URL(well_known_did_configuration_uri).host;
 
             if (domain_matches_resource_uri) {
@@ -133,7 +133,7 @@ function App() {
           }
           console.log({ verification_result });
           const domain_matches_resource_uri =
-            entry.credentialSubject.domain ===
+            entry.credentialSubject.origin ===
             new URL(well_known_did_configuration_uri).host;
           console.log({ domain_matches_resource_uri });
           if (domain_matches_resource_uri) {
