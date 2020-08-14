@@ -306,12 +306,9 @@
           `https://example.com/.well-known/did-configuration.json`.
         </li>
         <li>
-          Provided the call returns a successful response, ensure the body is no
-          larger than `8 kilobytes` in size.
-        </li>
-        <li>
-          Parse the body as JSON in accordance with
-          <a href="https://tools.ietf.org/html/rfc8259">IETF RFC 8259</a>.
+          Provided the call returns a successful response, or has not exceeded a tolerance
+          set by the implementer (e.g. maximum size), parse the body as JSON in accordance 
+          with <a href="https://tools.ietf.org/html/rfc8259">IETF RFC 8259</a>.
         </li>
       </ol>
 
@@ -320,10 +317,6 @@
         Domain Linkage Credentials, which contain cryptographically verifiable
         claims that prove the same entity controls both the included DIDs and
         the origin the resource is located under.
-      </p>
-      <p>
-        The resource MUST NOT exceed 8 kilobytes in total size; resources that
-        exceed this maximum size are to be ignored by the processing entity.
       </p>
 
       <pre class="example">

@@ -4,7 +4,7 @@
       "@version": 1.1,
       "didcfg": "https://identity.foundation/.well-known/contexts/did-configuration-v0.0#",
       "domainLinkageAssertion": "didcfg:domainLinkageAssertion",
-      "domain": "didcfg:domain",
+      "origin": "didcfg:origin",
       "entries": "didcfg:entries",
       "did": "didcfg:did",
       "vc": "didcfg:vc"
