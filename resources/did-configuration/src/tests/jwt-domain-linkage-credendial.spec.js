@@ -4,7 +4,7 @@ const jose = require("jose");
 const moment = require("moment");
 
 const unlockedDID = require("../fixtures/unlockedDID.json");
-const key = unlockedDID.assertionMethod[0];
+const key = unlockedDID.assertionMethod[1];
 const credential = require("../fixtures/credential.json");
 
 describe("jwt-domain-linkage-credential", () => {
@@ -21,7 +21,7 @@ describe("jwt-domain-linkage-credential", () => {
       moment("2020-04-13T16:44:52-05:00").format()
     );
     expect(moment.unix(jwtPayload.exp).format()).toEqual(
-      moment("2020-05-13T16:44:52-05:00").format()
+      moment("2022-05-13T16:44:52-05:00").format()
     );
     // console.log(JSON.stringify(jwtPayload, null, 2));
     const jwt = jose.JWT.sign(jwtPayload, jose.JWK.asKey(key.privateKeyJwk), {
@@ -45,7 +45,7 @@ describe("jwt-domain-linkage-credential", () => {
     });
     expect(payload).toEqual(jwtPayload);
     expect(signature).toEqual(
-      "qEV-lat1Wc8qKU_OLbTd07fx7tkW12QhkyiB912OsHi4FmkTWr_qMAFyW8IZxaQAsXg1E4yCRe8VsfGYaePfCg"
+      "am6aojyWxccW4WIVgORuHt4zwSTc7vAegG9TC5zucYobyOAD2RhVhDHEXmhqTCUZbwbXnysXvo-qw-PdcHDdCQ"
     );
   });
 });

@@ -24,7 +24,7 @@ const suite = new JsonWebSignature2020({
 });
 
 const issuanceDate = moment("2020-04-13T16:44:52-05:00").format();
-const expirationDate = moment("2020-05-13T16:44:52-05:00").format();
+const expirationDate = moment("2022-05-13T16:44:52-05:00").format();
 
 describe("ld-proof-domain-linkage-credential", () => {
   it("sign and verify ld-proof", async () => {
