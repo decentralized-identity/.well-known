@@ -627,13 +627,21 @@
     "controller": "did:example:123456789abcdefghi",
     "publicKeyPem": "-----BEGIN PUBLIC KEY...END PUBLIC KEY-----\r\n"
   }],
-  "service": [{
-    "id":"did:example:123456789abcdefghi#vcs",
-    "type": "LinkedDomains",
-    "serviceEndpoint": {
-      "origin": ["https://foo.example.com", "https://identity.foundation"]
+  "service": [
+    {
+      "id":"did:example:123456789abcdefghi#vcs",
+      "type": "LinkedDomains",
+      "serviceEndpoint": {
+        "origins": ["https://foo.example.com", "https://identity.foundation"]
+      }
+    },
+    {
+      "id":"did:example:123456789abcdefghi#vcs",
+      "type": "LinkedDomains",
+      "serviceEndpoint": "https://bar.example.com"
+      }
     }
-  }]
+  ]
 }                 
       </pre>
       
@@ -642,9 +650,10 @@
         <ul>
           <li>The object MUST contain an `id` property, and its value MUST be a valid DID URL reference.</li>
           <li>The object MUST contain a `type` property, and its value MUST be the string `"LinkedDomains"`.</li>
-          <li>The object MUST contain a `serviceEndpoint` property, and its value MUST be an object that 
-              contains a `origin` property, the value of which MUST be an array of one or more 
-              <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy">origins</a>.
+          <li>The object MUST contain a `serviceEndpoint` property, and its value MUST be either an 
+            <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy"></a>origin</a> 
+            string or an object that contains as `origins` property, the value of which MUST be an array of one 
+            or more <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy">origins</a>.
           </li>
         </ul>
       </p>
