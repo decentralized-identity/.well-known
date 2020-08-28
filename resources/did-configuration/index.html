@@ -322,7 +322,7 @@
       <pre class="example">
 {
   "@context": "https://identity.foundation/.well-known/contexts/did-configuration-v0.0.jsonld",
-  "entries": [
+  "linked_dids": [
     {
       "@context": [
         "https://www.w3.org/2018/credentials/v1",
@@ -351,12 +351,12 @@
 
       <ul>
         <li><code>@context</code> MUST be present.</li>
-        <li><code>entries</code> MUST be present.</li>
+        <li><code>linked_dids</code> MUST be present.</li>
       </ul>
 
       <p>
-        The value of <code>entries</code> MUST be an array of
-        <a>DomainLinkageCredential</a>
+        The value of <code>linked_dids</code> MUST be an array of
+        <a>DomainLinkageCredential</a> entries.
       </p>
 
       <p>
@@ -581,7 +581,7 @@
 
       <p>
         If the resource processing entity is not looking for the presence of a
-        specific DID, or intending to validate a specific DID in the `entries`
+        specific DID, or intending to validate a specific DID in the `linked_dids`
         array of Domain Linkage Credentials, the resource processing entity
         SHOULD iterate the array of Domain Linkage Credentials beginning at 0
         index. This normative iteration from 0 index is intended to allow origin
