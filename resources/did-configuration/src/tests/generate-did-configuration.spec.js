@@ -18,7 +18,7 @@ const credential = require("../fixtures/credential.json");
 delete credential.proof;
 
 describe("identity.foundation dids", () => {
-  const entries = [];
+  const linked_dids = [];
 
   it("JSON Web Token, JWK, Ed25519, did:web:identity.foundation", async () => {
     const key = {
@@ -63,7 +63,7 @@ describe("identity.foundation dids", () => {
       // beware that kid can anything...
       // an incredibily terrible property of jose...
     });
-    entries.push(jwt);
+    linked_dids.push(jwt);
   });
 
   it("JSON Web Token, JWK, secp256k1, did:elem:EiBJJPdo-ONF0jxqt8mZYEj9Z7FbdC87m2xvN0_HAbcoEg", async () => {
@@ -113,7 +113,7 @@ describe("identity.foundation dids", () => {
       // beware that kid can anything...
       // an incredibily terrible property of jose...
     });
-    entries.push(jwt);
+    linked_dids.push(jwt);
   });
   it("Linked Data Proof, base58, Ed25519, did:key:z6MkjRagNiMu91DduvCvgEsqLZDVzrJzFrwahc4tXLt9DoHd", async () => {
     const key = {
@@ -142,7 +142,7 @@ describe("identity.foundation dids", () => {
       documentLoader,
       suite,
     });
-    entries.push(verifiableCredential);
+    linked_dids.push(verifiableCredential);
   });
 
   it("Linked Data Proof, JWK, secp256k1, did:web:vc.transmute.world ", async () => {
@@ -189,7 +189,7 @@ describe("identity.foundation dids", () => {
       documentLoader,
       suite,
     });
-    entries.push(verifiableCredential);
+    linked_dids.push(verifiableCredential);
   });
 
   it("write configuration", async () => {
@@ -202,7 +202,7 @@ describe("identity.foundation dids", () => {
         {
           "@context":
             "https://identity.foundation/.well-known/contexts/did-configuration-v0.0.jsonld",
-          entries,
+            linked_dids,
         },
         null,
         2

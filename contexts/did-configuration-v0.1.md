@@ -8,11 +8,11 @@
 
 A claim object with fields for domain linkage assertions.
 
-<h4 id="domain"><a href="#domain">domain</a></h4>
+<h4 id="origin"><a href="#origin">origin</a></h4>
 
-The domain being claimed to be linked to the DID in the domainLinkageAssertion.
+The origin being claimed to be linked to the DID in the domainLinkageAssertion.
 
-<h4 id="entries"><a href="#entries">entries</a></h4>
+<h4 id="linked_dids"><a href="#linked_dids">linked_dids</a></h4>
 
 The list of did entities that are linked with this domain configuration by vc data model proofs.
 

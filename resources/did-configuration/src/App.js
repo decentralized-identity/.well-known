@@ -88,10 +88,10 @@ function App() {
       state.well_known_did_configuration_uri
     );
     console.log({ did_configuration_resource });
-    for (let i = 0; i < did_configuration_resource.entries.length; i++) {
+    for (let i = 0; i < did_configuration_resource.linked_dids.length; i++) {
       try {
         console.log("processing entry ", i);
-        let entry = did_configuration_resource.entries[i];
+        let entry = did_configuration_resource.linked_dids[i];
         console.log({ entry });
         if (typeof entry === "string") {
           const { header, payload, signature } = await ES256K.JWS.decode(
@@ -109,7 +109,7 @@ function App() {
             const verified = await ES256K.JWT.verify(entry, key.publicKeyJwk);
 
             const domain_matches_resource_uri =
-              verified.vc.credentialSubject.domain ===
+              verified.vc.credentialSubject.origin ===
               new URL(well_known_did_configuration_uri).host;
 
             if (domain_matches_resource_uri) {
@@ -133,7 +133,7 @@ function App() {
           }
           console.log({ verification_result });
           const domain_matches_resource_uri =
-            entry.credentialSubject.domain ===
+            entry.credentialSubject.origin ===
             new URL(well_known_did_configuration_uri).host;
           console.log({ domain_matches_resource_uri });
           if (domain_matches_resource_uri) {
