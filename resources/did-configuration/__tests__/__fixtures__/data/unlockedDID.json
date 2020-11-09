@@ -1,0 +1,59 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://w3c-ccg.github.io/lds-jws2020/contexts/lds-jws2020-v1.json"
+  ],
+  "id": "did:web:identity.foundation",
+  "publicKey": [
+    {
+      "id": "did:web:identity.foundation#_TKzHv2jFIyvdTGF1Dsgwngfdg3SH6TpDv0Ta1aOEkw",
+      "type": "JsonWebKey2020",
+      "controller": "did:web:identity.foundation",
+      "publicKeyJwk": {
+        "crv": "P-256",
+        "x": "38M1FDts7Oea7urmseiugGW7tWc3mLpJh6rKe7xINZ8",
+        "y": "nDQW6XZ7b_u2Sy9slofYLlG03sOEoug3I0aAPQ0exs4",
+        "kty": "EC",
+        "kid": "did:web:identity.foundation#_TKzHv2jFIyvdTGF1Dsgwngfdg3SH6TpDv0Ta1aOEkw"
+      },
+      "privateKeyJwk": {
+        "crv": "P-256",
+        "x": "38M1FDts7Oea7urmseiugGW7tWc3mLpJh6rKe7xINZ8",
+        "y": "nDQW6XZ7b_u2Sy9slofYLlG03sOEoug3I0aAPQ0exs4",
+        "d": "jo3AJc3hrH_Ms39W_4dAl2Qm3gAs9JrNijO6n30sIWc",
+        "kty": "EC",
+        "kid": "did:web:identity.foundation#_TKzHv2jFIyvdTGF1Dsgwngfdg3SH6TpDv0Ta1aOEkw"
+      }
+    },
+    {
+      "id": "did:web:identity.foundation#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A",
+      "type": "JsonWebKey2020",
+      "controller": "did:web:identity.foundation",
+      "publicKeyJwk": {
+        "crv": "Ed25519",
+        "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ",
+        "kty": "OKP",
+        "kid": "did:web:identity.foundation#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A"
+      },
+      "privateKeyJwk": {
+        "crv": "Ed25519",
+        "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ",
+        "d": "tP7VWE16yMQWUO2G250yvoevfbfxY25GjHglTP3ZOyU",
+        "kty": "OKP",
+        "kid": "did:web:identity.foundation#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A"
+      }
+    },
+    {
+      "id": "did:web:identity.foundation#z6Mktts3kfFWDrURs7fNpayz24LZeCGNvCaFMC6KkbeYpZvi",
+      "controller": "did:web:identity.foundation",
+      "type": "Ed25519VerificationKey2018",
+      "privateKeyBase58": "2fu69stzifU5bMzujkLvK1zLLtmYkW9gvpxMSxGvU4GkXm2KM2HS8nn4Uh5ScxnNDjq46Ru2cEKx4Mv9vHjdqKA2",
+      "publicKeyBase58": "FSc1AR14tJyxkcpg9229AxnZpczXWKKtfBBPvKgXuM9L"
+    }
+  ],
+  "assertionMethod": [
+    "did:web:identity.foundation#_TKzHv2jFIyvdTGF1Dsgwngfdg3SH6TpDv0Ta1aOEkw",
+    "did:web:identity.foundation#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A",
+    "did:web:identity.foundation#z6Mktts3kfFWDrURs7fNpayz24LZeCGNvCaFMC6KkbeYpZvi"
+  ]
+}
