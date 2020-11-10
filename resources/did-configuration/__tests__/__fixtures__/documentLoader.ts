@@ -1,7 +1,11 @@
+import fs from "fs";
+import path from "path";
 import jsonld from "jsonld";
 import { extendContextLoader } from "jsonld-signatures";
 import { resolver} from "./resolver";
-import didConfigurationV2Context from "../../../../contexts/did-configuration-v0.2.json";
+
+
+const didConfigurationV2Context = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../../../../contexts/did-configuration-v0.2.jsonld"), "utf8" ));
 
 const contexts: any = {
   "https://identity.foundation/.well-known/contexts/did-configuration-v0.2.jsonld": didConfigurationV2Context,
