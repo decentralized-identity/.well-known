@@ -1,0 +1,25 @@
+{
+  "name": "js-vc-ci-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint . --fix"
+  },
+  "author": "Orie Steele",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@transmute/did-key-ed25519": "^0.2.1-unstable.23",
+    "@transmute/ed25519-signature-2018": "^0.1.1-unstable.11",
+    "@transmute/jsonld-document-loader": "^0.2.0",
+    "@transmute/vc.js": "^0.1.1-unstable.11"
+  },
+  "devDependencies": {
+    "eslint": "^7.11.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.1.0",
+    "jest": "^26.6.3"
+  }
+}
