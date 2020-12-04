@@ -6,9 +6,6 @@ This repo contains proposals and links to proposals for `.well-known` uris relat
 
 - [Spec](https://identity.foundation/.well-known/resources/did-configuration/)
 - [Example](https://identity.foundation/.well-known/did-configuration.json)
-- [Demo](https://identity.foundation/.well-known/resources/did-configuration/demo/) (Demo currently inoperable, needs update, see https://github.com/decentralized-identity/.well-known/issues/45)
-
-
 
 ## .well-known/did.json
 
