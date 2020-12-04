@@ -5,9 +5,7 @@
       "@protected": true,
       "DomainLinkageCredential": "https://identity.foundation/.well-known/contexts/did-configuration-v0.2#DomainLinkageCredential",
       "origin": "https://identity.foundation/.well-known/contexts/did-configuration-v0.2#origin",
-      "linked_dids": "https://identity.foundation/.well-known/contexts/did-configuration-v0.2#linked_dids",
-      "did": "https://identity.foundation/.well-known/contexts/did-configuration-v0.2#did",
-      "vc": "https://www.w3.org/2018/credentials#VerifiableCredential"
+      "linked_dids": "https://identity.foundation/.well-known/contexts/did-configuration-v0.2#linked_dids"
     }
   ]
 }
