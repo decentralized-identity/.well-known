@@ -624,31 +624,33 @@
 
       <pre class="example">
 {
-  "@context": "https://www.w3.org/ns/did/v1",
-  "id": "did:example:123456789abcdefghi",
-  "authentication": [{
-    
-    "id": "did:example:123456789abcdefghi#keys-1",
-    "type": "RsaVerificationKey2018",
-    "controller": "did:example:123456789abcdefghi",
-    "publicKeyPem": "-----BEGIN PUBLIC KEY...END PUBLIC KEY-----\r\n"
+  "@context": ["https://www.w3.org/ns/did/v1","https://identity.foundation/.well-known/did-configuration/v1"],
+  "id": "did:example:123",
+  "verificationMethod": [{
+    "id": "did:example:123#_Qq0UL2Fq651Q0Fjd6TvnYE-faHiOpRlPVQcY_-tA4A",
+    "type": "JsonWebKey2020",
+    "controller": "did:example:123",
+    "publicKeyJwk": {
+      "kty": "OKP",
+      "crv": "Ed25519",
+      "x": "VCpo2LMLhn6iWku8MKvSLg2ZAoC-nlOyPVQaO3FxVeQ"
+    }
   }],
   "service": [
     {
-      "id":"did:example:123456789abcdefghi#vcs",
+      "id":"did:example:123#foo",
       "type": "LinkedDomains",
       "serviceEndpoint": {
         "origins": ["https://foo.example.com", "https://identity.foundation"]
       }
     },
     {
-      "id":"did:example:123456789abcdefghi#vcs",
+      "id":"did:example:123#bar",
       "type": "LinkedDomains",
       "serviceEndpoint": "https://bar.example.com"
-      }
     }
   ]
-}                 
+}               
       </pre>
       
       <p>
