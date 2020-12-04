@@ -111,7 +111,7 @@
         <h2><dfn data-lt="DID" data-dfn-type="dfn" id="DID">DID</dfn></h2>
         <p>
           See the normative definition
-          <a href="https://w3c.github.io/did-core/#identifier" target="_blank"
+          <a href="https://www.w3.org/TR/did-core/#identifier" target="_blank"
             >here</a
           >, [[did-core]].
         </p>
@@ -125,7 +125,7 @@
         <p>
           See the normative definition
           <a
-            href="https://w3c.github.io/did-core/#did-documents"
+            href="https://www.w3.org/TR/did-core/#dfn-did-documents"
             target="_blank"
             >here</a
           >, [[did-core]].
@@ -169,7 +169,7 @@
         <p>
           See the normative definition
           <a
-            href="https://w3c.github.io/did-core/#dfn-did-controllers"
+            href="https://www.w3.org/TR/did-core/#dfn-did-controllers"
             target="_blank"
             >here</a
           >, [[vc-data-model]].
@@ -321,16 +321,16 @@
 
       <pre class="example">
 {
-  "@context": "https://identity.foundation/.well-known/contexts/did-configuration-v0.2.jsonld",
+  "@context": "https://identity.foundation/.well-known/did-configuration/v1",
   "linked_dids": [
     {
       "@context": [
         "https://www.w3.org/2018/credentials/v1",
-        "https://identity.foundation/.well-known/contexts/did-configuration-v0.2.jsonld"
+        "https://identity.foundation/.well-known/did-configuration/v1"
       ],
       "issuer": "did:key:z6MkoTHsgNNrby8JzCNQ1iRLyW5QQ6R8Xuu6AA8igGrMVPUM",
-      "issuanceDate": "2020-12-04T10:46:05-06:00",
-      "expirationDate": "2025-12-04T10:46:05-06:00",
+      "issuanceDate": "2020-12-04T13:37:34-06:00",
+      "expirationDate": "2025-12-04T13:37:34-06:00",
       "type": [
         "VerifiableCredential",
         "DomainLinkageCredential"
@@ -341,14 +341,14 @@
       },
       "proof": {
         "type": "Ed25519Signature2018",
-        "created": "2020-12-04T16:46:05.930Z",
-        "jws": "eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..8Cfr-WveksWAoipBB82w4Fp8K2DjHYFc0vUnLCaWRGZFOSE1AnD1iD209MJXeXgJSkQ9C7F6n0xYl_HWHgiYAg",
+        "created": "2020-12-04T19:37:34.136Z",
+        "jws": "eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..QS5ni2o8SGXuKxsBiRrpFx2oXbSlAz4nrCe0ksJwz5o15jZcYFPkBhU1HRGKaBcpfg1y8_fiH-mk5Tb4js5SAw",
         "proofPurpose": "assertionMethod",
         "verificationMethod": "did:key:z6MkoTHsgNNrby8JzCNQ1iRLyW5QQ6R8Xuu6AA8igGrMVPUM#z6MkoTHsgNNrby8JzCNQ1iRLyW5QQ6R8Xuu6AA8igGrMVPUM"
       }
     }
   ]
-}             
+}           
         </pre>
 
       <ul>
@@ -420,11 +420,11 @@
 {
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
-    "https://identity.foundation/.well-known/contexts/did-configuration-v0.2.jsonld"
+    "https://identity.foundation/.well-known/did-configuration/v1"
   ],
   "issuer": "did:key:z6MkoTHsgNNrby8JzCNQ1iRLyW5QQ6R8Xuu6AA8igGrMVPUM",
-  "issuanceDate": "2020-12-04T10:46:05-06:00",
-  "expirationDate": "2025-12-04T10:46:05-06:00",
+  "issuanceDate": "2020-12-04T13:37:34-06:00",
+  "expirationDate": "2025-12-04T13:37:34-06:00",
   "type": [
     "VerifiableCredential",
     "DomainLinkageCredential"
@@ -435,8 +435,8 @@
   },
   "proof": {
     "type": "Ed25519Signature2018",
-    "created": "2020-12-04T16:46:05.930Z",
-    "jws": "eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..8Cfr-WveksWAoipBB82w4Fp8K2DjHYFc0vUnLCaWRGZFOSE1AnD1iD209MJXeXgJSkQ9C7F6n0xYl_HWHgiYAg",
+    "created": "2020-12-04T19:37:34.136Z",
+    "jws": "eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..QS5ni2o8SGXuKxsBiRrpFx2oXbSlAz4nrCe0ksJwz5o15jZcYFPkBhU1HRGKaBcpfg1y8_fiH-mk5Tb4js5SAw",
     "proofPurpose": "assertionMethod",
     "verificationMethod": "did:key:z6MkoTHsgNNrby8JzCNQ1iRLyW5QQ6R8Xuu6AA8igGrMVPUM#z6MkoTHsgNNrby8JzCNQ1iRLyW5QQ6R8Xuu6AA8igGrMVPUM"
   }
@@ -554,7 +554,7 @@
 
         <li>
           The implementer MUST perform
-          <a href="https://w3c-ccg.github.io/did-resolution/">DID resolution</a>
+          <a href="https://www.w3.org/TR/did-core/#resolution">DID resolution</a>
           on the DID specified in the <a>Issuer</a> of the
           <a>Domain Linkage Credential</a> to obtain the associated DID
           document.
@@ -563,7 +563,7 @@
           Using the retrieved DID document, the implementer MUST validate the
           signature of the <a>Domain Linkage Credential</a> against key material
           referenced in the
-          <a href="https://w3c.github.io/did-spec/#assertionMethod"
+          <a href="https://www.w3.org/TR/did-core/#assertion"
             >assertionMethod section</a
           >
           of the DID document.

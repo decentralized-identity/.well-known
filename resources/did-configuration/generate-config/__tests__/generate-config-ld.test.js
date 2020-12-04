@@ -15,7 +15,7 @@ it("can issue / verify vanilla", async () => {
     credential: {
       "@context": [
         "https://www.w3.org/2018/credentials/v1",
-        "https://identity.foundation/.well-known/contexts/did-configuration-v0.2.jsonld",
+        "https://identity.foundation/.well-known/did-configuration/v1",
       ],
       issuer: k0.controller,
       issuanceDate: moment().format(),
@@ -43,7 +43,7 @@ it("can issue / verify vanilla", async () => {
     JSON.stringify(
       {
         "@context":
-          "https://identity.foundation/.well-known/contexts/did-configuration-v0.2.jsonld",
+          "https://identity.foundation/.well-known/did-configuration/v1",
         linked_dids: [verifiableCredential],
       },
       null,

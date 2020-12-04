@@ -6,16 +6,7 @@ const fs = require("fs");
 const path = require("path");
 const { driver } = require("@transmute/did-key-ed25519");
 
-const didConfigContext = JSON.parse(
-  fs
-    .readFileSync(
-      path.resolve(
-        __dirname,
-        "../../../../contexts/did-configuration-v0.2.jsonld"
-      )
-    )
-    .toString()
-);
+const context = require("../../../../did-configuration/v1/index.json");
 
 const documentLoader = documentLoaderFactory.pluginFactory
   .build({
@@ -26,7 +17,7 @@ const documentLoader = documentLoaderFactory.pluginFactory
     },
   })
   .addContext({
-    "https://identity.foundation/.well-known/contexts/did-configuration-v0.2.jsonld": didConfigContext,
+    "https://identity.foundation/.well-known/did-configuration/v1": context,
   })
   .addResolver({
     "did:key:z6": {

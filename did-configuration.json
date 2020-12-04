@@ -1,88 +1,25 @@
 {
-  "@context": "https://identity.foundation/.well-known/contexts/did-configuration-v0.2.jsonld",
+  "@context": "https://identity.foundation/.well-known/did-configuration/v1",
   "linked_dids": [
     {
       "@context": [
         "https://www.w3.org/2018/credentials/v1",
-        "https://identity.foundation/.well-known/contexts/did-configuration-v0.2.jsonld"
+        "https://identity.foundation/.well-known/did-configuration/v1"
       ],
-      "issuer": "did:key:z6MkjRagNiMu91DduvCvgEsqLZDVzrJzFrwahc4tXLt9DoHd",
-      "issuanceDate": "2020-12-04T08:47:34-06:00",
-      "expirationDate": "2025-12-04T08:47:34-06:00",
+      "issuer": "did:key:z6MkoTHsgNNrby8JzCNQ1iRLyW5QQ6R8Xuu6AA8igGrMVPUM",
+      "issuanceDate": "2020-12-04T13:37:34-06:00",
+      "expirationDate": "2025-12-04T13:37:34-06:00",
       "type": ["VerifiableCredential", "DomainLinkageCredential"],
       "credentialSubject": {
-        "id": "did:key:z6MkjRagNiMu91DduvCvgEsqLZDVzrJzFrwahc4tXLt9DoHd",
+        "id": "did:key:z6MkoTHsgNNrby8JzCNQ1iRLyW5QQ6R8Xuu6AA8igGrMVPUM",
         "origin": "https://identity.foundation"
       },
       "proof": {
         "type": "Ed25519Signature2018",
-        "created": "2020-12-04T14:47:34.261Z",
-        "jws": "eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..3dhvZ5skb-BLQ8tv3f_hbIm81Xp12HaygBCk-JgAePsLJCTLWf_d6jY09nD5O0v8Eu_M8CXKcv6cT8_4056eBQ",
+        "created": "2020-12-04T19:37:34.136Z",
+        "jws": "eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..QS5ni2o8SGXuKxsBiRrpFx2oXbSlAz4nrCe0ksJwz5o15jZcYFPkBhU1HRGKaBcpfg1y8_fiH-mk5Tb4js5SAw",
         "proofPurpose": "assertionMethod",
-        "verificationMethod": "did:key:z6MkjRagNiMu91DduvCvgEsqLZDVzrJzFrwahc4tXLt9DoHd#z6MkjRagNiMu91DduvCvgEsqLZDVzrJzFrwahc4tXLt9DoHd"
-      }
-    },
-    {
-      "@context": [
-        "https://www.w3.org/2018/credentials/v1",
-        "https://identity.foundation/.well-known/contexts/did-configuration-v0.2.jsonld"
-      ],
-      "issuer": "did:web:vc.transmute.world",
-      "issuanceDate": "2020-12-04T08:47:34-06:00",
-      "expirationDate": "2025-12-04T08:47:34-06:00",
-      "type": ["VerifiableCredential", "DomainLinkageCredential"],
-      "credentialSubject": {
-        "id": "did:web:vc.transmute.world",
-        "origin": "https://identity.foundation"
-      },
-      "proof": {
-        "type": "Ed25519Signature2018",
-        "created": "2020-12-04T14:47:34.350Z",
-        "jws": "eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..k7e8heLn2YRzcvJSzhJH9FxuazuTorMkwrAemv6cfe29M4CBdvKiblFAsrqOn4r8BjPjse9T-Ec80JRFNkhHCw",
-        "proofPurpose": "assertionMethod",
-        "verificationMethod": "did:web:vc.transmute.world#z6MksHh7qHWvybLg5QTPPdG2DgEjjduBDArV9EF9mRiRzMBN"
-      }
-    },
-    {
-      "@context": [
-        "https://www.w3.org/2018/credentials/v1",
-        "https://identity.foundation/.well-known/contexts/did-configuration-v0.2.jsonld"
-      ],
-      "issuer": "did:elem:ropsten:EiBJJPdo-ONF0jxqt8mZYEj9Z7FbdC87m2xvN0_HAbcoEg",
-      "issuanceDate": "2020-12-04T08:47:34-06:00",
-      "expirationDate": "2025-12-04T08:47:34-06:00",
-      "type": ["VerifiableCredential", "DomainLinkageCredential"],
-      "credentialSubject": {
-        "id": "did:elem:ropsten:EiBJJPdo-ONF0jxqt8mZYEj9Z7FbdC87m2xvN0_HAbcoEg",
-        "origin": "https://identity.foundation"
-      },
-      "proof": {
-        "type": "Ed25519Signature2018",
-        "created": "2020-12-04T14:47:34.407Z",
-        "jws": "eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..EMEr9Yg17RZvPBTceJh61oBLBU2hIIAw3QldzlFmgsKPLf3FAYDREbigfFeN9mVzURKOL1wPJRdZ9VaE6JhFBw",
-        "proofPurpose": "assertionMethod",
-        "verificationMethod": "did:elem:ropsten:EiBJJPdo-ONF0jxqt8mZYEj9Z7FbdC87m2xvN0_HAbcoEg#xqc3gS1gz1vch7R3RvNebWMjLvBOY-n_14feCYRPsUo"
-      }
-    },
-    {
-      "@context": [
-        "https://www.w3.org/2018/credentials/v1",
-        "https://identity.foundation/.well-known/contexts/did-configuration-v0.2.jsonld"
-      ],
-      "issuer": "did:v1:test:nym:z6MkhdmzFu659ZJ4XKj31vtEDmjvsi5yDZG5L7Caz63oP39k",
-      "issuanceDate": "2020-12-04T08:47:34-06:00",
-      "expirationDate": "2025-12-04T08:47:34-06:00",
-      "type": ["VerifiableCredential", "DomainLinkageCredential"],
-      "credentialSubject": {
-        "id": "did:v1:test:nym:z6MkhdmzFu659ZJ4XKj31vtEDmjvsi5yDZG5L7Caz63oP39k",
-        "origin": "https://identity.foundation"
-      },
-      "proof": {
-        "type": "Ed25519Signature2018",
-        "created": "2020-12-04T14:47:34.456Z",
-        "jws": "eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..7SVPAScLNNwtDNvLE06sMT8fnHemCIXfKWJyCqKVrEEg-oMLe6oIXmS8tT32i9n2qUssXpo0D5SgXFSpOQUvBg",
-        "proofPurpose": "assertionMethod",
-        "verificationMethod": "did:v1:test:nym:z6MkhdmzFu659ZJ4XKj31vtEDmjvsi5yDZG5L7Caz63oP39k#z6MkiukuAuQAE8ozxvmahnQGzApvtW7KT5XXKfojjwbdEomY"
+        "verificationMethod": "did:key:z6MkoTHsgNNrby8JzCNQ1iRLyW5QQ6R8Xuu6AA8igGrMVPUM#z6MkoTHsgNNrby8JzCNQ1iRLyW5QQ6R8Xuu6AA8igGrMVPUM"
       }
     }
   ]
