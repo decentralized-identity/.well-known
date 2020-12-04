@@ -1,5 +1,5 @@
 {
-  "name": "js-vc-ci-tests",
+  "name": "well-known-did-configuration-ci-tests",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,7 +13,9 @@
     "@transmute/did-key-ed25519": "^0.2.1-unstable.23",
     "@transmute/ed25519-signature-2018": "^0.1.1-unstable.11",
     "@transmute/jsonld-document-loader": "^0.2.0",
-    "@transmute/vc.js": "^0.1.1-unstable.11"
+    "@transmute/vc.js": "^0.1.1-unstable.11",
+    "jose": "^3.2.0",
+    "moment": "^2.29.1"
   },
   "devDependencies": {
     "eslint": "^7.11.0",
