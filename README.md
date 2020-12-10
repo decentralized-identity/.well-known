@@ -1,6 +1,6 @@
 #### [View on GitHub](https://github.com/decentralized-identity/.well-known)
 
-This repo contains proposals and links to proposals for `.well-known` uris related to DIDs, Hubs and Agents. See [rfc5785](https://tools.ietf.org/html/rfc5785) for more details on Defining Well-Known Uniform Resource Identifiers.
+This repo contains proposals and links to proposals for `.well-known` uris related to DIDs, Hubs and Agents. See IETF [RFC5785](https://tools.ietf.org/html/rfc5785) for more details on Defining Well-Known Uniform Resource Identifiers.
 
 ## .well-known/did-configuration.json
 
@@ -20,3 +20,11 @@ This repo contains proposals and links to proposals for `.well-known` uris relat
 - [W3C Decentralized Characteristics Rubric v1.0](https://github.com/w3c/did-rubric)
 - [Decentralized Identifier Use Cases v1.0](https://github.com/w3c/did-use-cases)
 - [W3C DID Test Suite and Implementation Report](https://github.com/w3c/did-test-suite)
+
+### Known reference implementations
+
+|implementer|url|date last checked|
+|---|---|---|
+|dif| [identity.foundation/.well-known/did-configuration/v1/](https://identity.foundation/.well-known/did-configuration/v1/) |12-10-20|
+|transmute| [www.transmute.industries/.well-known/did.json](https://www.transmute.industries/.well-known/did.json) |12-10-20|
+|mattr global| [mattr.global/.well-known/did.json](https://mattr.global/.well-known/did.json) |12-10-20|
