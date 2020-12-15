@@ -21,10 +21,11 @@ This repo contains proposals and links to proposals for `.well-known` uris relat
 - [Decentralized Identifier Use Cases v1.0](https://github.com/w3c/did-use-cases)
 - [W3C DID Test Suite and Implementation Report](https://github.com/w3c/did-test-suite)
 
-### Known reference implementations
+### Known implementations
 
-|implementer|url|date last checked|
+|implementer|did.json|did-configuration.json|date last checked|
 |---|---|---|
-|dif| [identity.foundation/.well-known/did.json](https://identity.foundation/.well-known/did.json) |12-10-20|
-|transmute| [www.transmute.industries/.well-known/did.json](https://www.transmute.industries/.well-known/did.json) |12-10-20|
-|mattr global| [mattr.global/.well-known/did.json](https://mattr.global/.well-known/did.json) |12-10-20|
+|dif| [X](https://identity.foundation/.well-known/did.json) |[X](https://identity.foundation/.well-known/did-configuration.json) |12-10-20|
+|transmute| [X](https://www.transmute.industries/.well-known/did.json) |[X](https://www.transmute.industries/.well-known/did-configuration.json) |12-10-20|
+|mattr global| [X](https://mattr.global/.well-known/did.json) | |12-10-20|
+|trinsic| [X](https://trinsic.id/.well-known/did.json) |[X](https://trinsic.id/.well-known/did-configuration.json) |12-15-20|
