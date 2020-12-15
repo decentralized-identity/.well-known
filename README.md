@@ -24,7 +24,7 @@ This repo contains proposals and links to proposals for `.well-known` uris relat
 ### Known implementations
 
 |implementer|did.json|did-configuration.json|date last checked|
-|---|---|---|
+|---|---|---|---|
 |dif| [X](https://identity.foundation/.well-known/did.json) |[X](https://identity.foundation/.well-known/did-configuration.json) |12-10-20|
 |transmute| [X](https://www.transmute.industries/.well-known/did.json) |[X](https://www.transmute.industries/.well-known/did-configuration.json) |12-10-20|
 |mattr global| [X](https://mattr.global/.well-known/did.json) | |12-10-20|
