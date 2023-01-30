@@ -2,15 +2,21 @@
 
 This repo contains proposals and links to proposals for `.well-known` uris related to DIDs, Hubs and Agents. See IETF [RFC5785](https://tools.ietf.org/html/rfc5785) for more details on Defining Well-Known Uniform Resource Identifiers.
 
+### Please DO NOT contact IANA regarding registration of well known URIs associated with these specifications.
+
 ## .well-known/did-configuration.json
 
 - [Spec](https://identity.foundation/.well-known/resources/did-configuration/)
 - [Example](https://identity.foundation/.well-known/did-configuration.json)
 
-## .well-known/did.json
+Contact: public-credentials@w3.org 
+
+## `.well-known/did.json`
 
 - [Spec](https://github.com/w3c-ccg/did-method-web)
 - [Example](https://identity.foundation/.well-known/did.json)
+
+Contact: public-credentials@w3.org 
 
 ## DID Working Group Repositories
 
