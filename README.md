@@ -11,7 +11,7 @@ This repo contains proposals and links to proposals for `.well-known` uris relat
 
 Contact: public-credentials@w3.org 
 
-## .well-known/did.json
+## `.well-known/did.json`
 
 - [Spec](https://github.com/w3c-ccg/did-method-web)
 - [Example](https://identity.foundation/.well-known/did.json)
