@@ -27,11 +27,19 @@ Contact: public-credentials@w3.org
 - [Decentralized Identifier Use Cases v1.0](https://github.com/w3c/did-use-cases)
 - [W3C DID Test Suite and Implementation Report](https://github.com/w3c/did-test-suite)
 
-### Known implementations
+### Known published DID documents
 
-|implementer|did.json|did-configuration.json|date last checked|
+|implementer|did.json|did-configuration.json|date last checked (m-d-y)|
 |---|---|---|---|
-|dif| [X](https://identity.foundation/.well-known/did.json) |[X](https://identity.foundation/.well-known/did-configuration.json) |12-10-20|
-|transmute| [X](https://www.transmute.industries/.well-known/did.json) |[X](https://www.transmute.industries/.well-known/did-configuration.json) |12-10-20|
-|mattr global| [X](https://mattr.global/.well-known/did.json) | |12-10-20|
-|trinsic| [X](https://trinsic.id/.well-known/did.json) |[X](https://trinsic.id/.well-known/did-configuration.json) |12-15-20|
+|dif| [X](https://identity.foundation/.well-known/did.json) |[X](https://identity.foundation/.well-known/did-configuration.json) |10-09-25|
+|mattr global| [X](https://mattr.global/.well-known/did.json) | |10-09-25|
+|trinsic| |[X](https://trinsic.id/.well-known/did-configuration.json) |10-09-20|
+
+### Known reference implementations
+
+|implementer|implementation|git repository|date last checked (m-d-y)|
+|---|---|---|---|
+|dif| [verification](https://check.identinet.io/) | https://github.com/identinet/check |10-09-25|
+|Impierce Technologies| resolving, JSON validation of multiple did methods | https://github.com/impierce/did-manager |10-09-25|
+|Impierce Technologies| verification | https://github.com/impierce/identity-wallet/tree/dev/identity-wallet/src/state/did |10-09-25|
+|Impierce Technologies| DID document creation | https://github.com/impierce/ssi-agent/blob/beta/agent_identity/src/state.rs |10-09-25|
