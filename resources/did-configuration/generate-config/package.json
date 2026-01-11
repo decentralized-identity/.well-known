@@ -11,9 +11,9 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@transmute/did-key-ed25519": "^0.2.1-unstable.23",
-    "@transmute/ed25519-signature-2018": "^0.1.1-unstable.11",
+    "@transmute/ed25519-signature-2018": "^0.7.0-unstable.80",
     "@transmute/jsonld-document-loader": "^0.2.0",
-    "@transmute/vc.js": "^0.1.1-unstable.11",
+    "@transmute/vc.js": "^0.7.0-unstable.80",
     "jose": "^3.2.0",
     "moment": "^2.29.1"
   },
